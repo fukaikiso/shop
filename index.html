@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/common.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap-icons.css">
+    <title>五叶蛋糕店</title>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <header class="main-header">
+            <div class="container">
+                <div class="header-inner row align-items-center justify-content-between">
+                    <div class="logo col-3"><a href="#"><img src="./assets/img/logo.png" alt="logo"></a></div>
+                    <div class="search input-group col-6">
+                        <input type="text" class="" placeholder="请输入搜索内容">
+                        <button class="">search</button>
+                    </div>
+                    <div class="menu-collections col-3 row justify-content-center align-items-center">
+                        <span class="bi-heart col-3"></span>
+                        <span class="bi-cart-dash col-3"></span>
+                        <span class="bi-person col-3"></span>
+                        <span class="bi-list col-3"></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="header-placeholder"></div>
+
+
+    </div>
+
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
+    <script>
+        // 填充文字
+        const d = document.querySelector('.page-wrapper');
+        for (let i = 0; i < 100; i++) {
+            $(`<div>hhhhhhhhhhhhhhhhhh</div>`).appendTo(d)
+        }
+
+        // header fix后脱离文档流，需要重新占据高度占据高度
+        $('.header-placeholder').css('height', `${$('.main-header').height()}`)
+
+    </script>
+</body>
+
+</html>
