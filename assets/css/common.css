@@ -3,11 +3,12 @@
     top: 0;
     left: 0;
     right: 0;
+    background-color: #fff;
 }
 
 .main-header .logo>a {
     display: block;
-    max-width: 10rem;
+    max-width: 12rem;
 }
 
 .main-header .logo img {
@@ -19,7 +20,7 @@
 }
 
 .main-header .search input {
-    width: 80%;
+    width: 70%;
     padding: 0 1rem;
     border: 1px solid #aaa;
     border-radius: 0.25rem;
@@ -40,8 +41,10 @@
     text-align: center;
 }
 
-.main-header .menu-collections>span:last-child {
+.main-header .menu {
+    max-width: 3rem;
     padding: 10px;
     background-color: #6ac780;
     color: #fff;
+    text-align: center;
 }

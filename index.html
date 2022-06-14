@@ -19,17 +19,18 @@
         <header class="main-header">
             <div class="container">
                 <div class="header-inner row align-items-center justify-content-between">
-                    <div class="logo col-3"><a href="#"><img src="./assets/img/logo.png" alt="logo"></a></div>
+                    <div class="logo col-3"><a href="#"><img src="./assets/img/logo.png" alt="logo"></a>
+                    </div>
                     <div class="search input-group col-6">
                         <input type="text" class="" placeholder="请输入搜索内容">
                         <button class="">search</button>
                     </div>
-                    <div class="menu-collections col-3 row justify-content-center align-items-center">
-                        <span class="bi-heart col-3"></span>
-                        <span class="bi-cart-dash col-3"></span>
-                        <span class="bi-person col-3"></span>
-                        <span class="bi-list col-3"></span>
+                    <div class="menu-collections col-2 row justify-content-center align-items-center">
+                        <span class="bi-heart col-4"></span>
+                        <span class="bi-cart-dash col-4"></span>
+                        <span class="bi-person col-4"></span>
                     </div>
+                    <div class="menu bi-list col-1"></div>
                 </div>
             </div>
         </header>
@@ -39,17 +40,7 @@
     </div>
 
     <script src="./assets/js/jquery-3.6.0.min.js"></script>
-    <script>
-        // 填充文字
-        const d = document.querySelector('.page-wrapper');
-        for (let i = 0; i < 100; i++) {
-            $(`<div>hhhhhhhhhhhhhhhhhh</div>`).appendTo(d)
-        }
-
-        // header fix后脱离文档流，需要重新占据高度占据高度
-        $('.header-placeholder').css('height', `${$('.main-header').height()}`)
-
-    </script>
+    <script src="./assets/js/index.js"></script>
 </body>
 
 </html>
