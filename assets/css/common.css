@@ -1,0 +1,47 @@
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.main-header .logo>a {
+    display: block;
+    max-width: 10rem;
+}
+
+.main-header .logo img {
+    width: 100%;
+}
+
+.main-header .search {
+   width: 50%;
+}
+
+.main-header .search input {
+    width: 80%;
+    padding: 0 1rem;
+    border: 1px solid #aaa;
+    border-radius: 0.25rem;
+}
+
+.main-header .search button {
+    border: 1px solid #6ac780;
+    background-color: #6ac780;
+    color: #fff;
+    padding: 0.4rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.2rem;
+}
+
+.main-header .menu-collections {
+    user-select: none;
+    max-width: 16rem;
+    text-align: center;
+}
+
+.main-header .menu-collections>span:last-child {
+    padding: 10px;
+    background-color: #6ac780;
+    color: #fff;
+}
