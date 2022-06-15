@@ -2,45 +2,61 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/common.css">
-    <link rel="stylesheet" href="./assets/css/index.css">
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/bootstrap-icons.css">
-    <title>五叶蛋糕店</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/base.css">
+  <link rel="stylesheet" href="./assets/css/common.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap-icons.css">
+  <title>五叶蛋糕店</title>
 </head>
 
 <body>
-    <div class="page-wrapper">
-        <header class="main-header">
-            <div class="container">
-                <div class="header-inner row align-items-center justify-content-between">
-                    <div class="logo col-3"><a href="#"><img src="./assets/img/logo.png" alt="logo"></a>
-                    </div>
-                    <div class="search input-group col-6">
-                        <input type="text" class="" placeholder="请输入搜索内容">
-                        <button class="">search</button>
-                    </div>
-                    <div class="menu-collections col-2 row justify-content-center align-items-center">
-                        <span class="bi-heart col-4"></span>
-                        <span class="bi-cart-dash col-4"></span>
-                        <span class="bi-person col-4"></span>
-                    </div>
-                    <div class="menu bi-list col-1"></div>
-                </div>
-            </div>
-        </header>
-        <div class="header-placeholder"></div>
+  <div class="page-wrapper">
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner row align-items-center justify-content-between">
+          <div class="logo col-md-3 col-6 order-md-1 order-2 "><a href="#"><img class="" src="./assets/img/logo.png"
+                alt="logo"></a>
+          </div>
+          <div class="search col-lg-5 col-md-6 col-12 order-md-2 order-4">
+            <input type="text" class="" placeholder="请输入搜索内容">
+            <button class="">search</button>
+          </div>
+          <div
+            class="menu-collections col-md-2 col-3 order-md-3 order-3 row row-cols-4 justify-content-between align-items-center">
+            <span class="bi-heart"></span>
+            <span class="bi-cart-dash"></span>
+            <span class="bi-person"></span>
+          </div>
+          <button class="menu bi-list col-md-1 order-md-4 order-1 col-3"></button>
+        </div>
+      </div>
+    </header>
 
 
-    </div>
+  </div>
 
-    <script src="./assets/js/jquery-3.6.0.min.js"></script>
-    <script src="./assets/js/index.js"></script>
+  <script src="./assets/js/jquery-3.6.0.min.js"></script>
+  <script src="./assets/js/index.js"></script>
+  <script>
+    //menu-collections悬浮效果
+
+    $('.menu-collections>span').hover(function () {
+      const icon = $(this).prop('class')
+      $(this).removeClass(icon)
+      $(this).addClass(`${icon}-fill`)
+      $(this).animate()
+    }, function () {
+      const icon = $(this).prop('class')
+      $(this).removeClass(icon)
+      $(this).addClass(icon.slice(0, -5))
+    })
+
+  </script>
 </body>
 
 </html>
