@@ -43,10 +43,12 @@
           <img src="./assets/img/banner1.jpg" alt="">
           <img src="./assets/img/banner2.jpg" alt="">
           <img src="./assets/img/banner1.jpg" alt="">
+          <img src="./assets/img/banner2.jpg" alt="">
         </div>
 
         <div class="dots">
           <span class="active"></span>
+          <span></span>
           <span></span>
           <span></span>
         </div>
@@ -57,10 +59,7 @@
         </div>
       </div>
 
-
-
     </section>
-
 
   </div>
 
@@ -68,31 +67,6 @@
   <script src="./assets/js/common.js"></script>
   <script src="./assets/js/index.js"></script>
   <script>
-
-    //轮播图圆点
-    $('.banner .dots>span').mouseover(function () {
-      $(this).addClass('active').siblings().removeClass('active')
-      const index = $(this).index()
-      $('.banner .imgs>img').eq(0).stop().animate({ marginLeft: `-${index}00%` })
-    })
-    //轮播图按钮
-    $('.banner .btns>img').eq(0).click(function () {
-      const $prev = $('.banner .active').prev()
-      if ($prev.length) {
-        $prev.mouseover()
-      } else {
-        $('.banner .dots>span').eq(-1).mouseover()
-      }
-    })
-
-    $('.banner .btns>img').eq(1).click(function () {
-      const $next = $('.banner .active').next()
-      if ($next.length) {
-        $next.mouseover()
-      } else {
-        $('.banner .dots>span').eq(0).mouseover()
-      }
-    })
 
   </script>
 </body>
