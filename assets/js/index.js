@@ -14,13 +14,6 @@
     })
 
 
-    //menu-collections悬浮效果
-    $('.menu-collections>span').eq(0).mouseover(function () {
-        $(this).toggleClass('bi-heart')
-        $(this).toggleClass('bi-heart-fill')
-        $(this)
-    })
-
 
 
 })(window.jQuery);

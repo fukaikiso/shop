@@ -55,7 +55,15 @@
     
 }
 
+.main-header .menu-collections span {
+    position: relative;
+    height: 1rem;font-size: 1.2rem;
+}
+
 .main-header .menu-collections span::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     cursor: pointer;
 }
 
@@ -67,4 +75,5 @@
     color: #fff;
     text-align: center;
     border-radius: 0.25rem;
+    user-select: none;
 }

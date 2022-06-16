@@ -16,14 +16,14 @@
 
 <body>
   <div class="page-wrapper">
-    <header class="main-header">
+    <header class="main-header pb-1 pb-md-0">
       <div class="container">
         <div class="header-inner row align-items-center justify-content-between">
           <div class="logo col-md-3 col-6 order-md-1 order-2 "><a href="#"><img class="" src="./assets/img/logo.png"
                 alt="logo"></a>
           </div>
-          <div class="search col-lg-5 col-md-6 col-12 order-md-2 order-4">
-            <input type="text" class="" placeholder="请输入搜索内容">
+          <div class="search col-lg-5 col-md-6 order-4 order-md-2">
+            <input type="text" class="mb-md-0 mb-15" placeholder="请输入搜索内容">
             <button class="">search</button>
           </div>
           <div
@@ -37,6 +37,12 @@
       </div>
     </header>
 
+    <section class="banner">
+
+      <img src="./assets/img/banner1.jpg" alt="">
+
+    </section>
+
 
   </div>
 
@@ -49,11 +55,11 @@
       const icon = $(this).prop('class')
       $(this).removeClass(icon)
       $(this).addClass(`${icon}-fill`)
-      $(this).animate()
     }, function () {
       const icon = $(this).prop('class')
       $(this).removeClass(icon)
       $(this).addClass(icon.slice(0, -5))
+
     })
 
   </script>
