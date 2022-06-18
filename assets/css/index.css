@@ -56,3 +56,17 @@
     background-color: rgb(138, 136, 136);
 }
 
+
+.goods .item .pic {
+    min-height: 280px;
+    background: url(../img/banner1.jpg);
+}
+
+
+.goods .item .desc .bi-cart3 {
+    border: 1px solid #81c586;
+    width: 0.9rem;
+    height: 0.8rem;
+    padding: 0.2rem;
+    border-radius: 50%;
+}
