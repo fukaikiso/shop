@@ -32,6 +32,18 @@
         $('.banner .btns>img').eq(1).click()
     }, 2000);
 
+    //选中图片显示细节
+    $('.goods .item .pic').on('click', function () {
+        const d = $(this).next().next()
+        d.show()
+    })
+
+    //点击取消选择detail
+    $('.goods .detail').on('click', function () {
+        $(this).hide();
+
+    })
+
     //选中加入购物车跳转
     $('.goods .add-to-cart').click(function () {
         window.location.href = '#'
@@ -41,6 +53,8 @@
     $('.goods .desc .bi-heart').click(function () {
         $(this).toggleClass('active');
     })
+
+
 
 
 })(window.jQuery);

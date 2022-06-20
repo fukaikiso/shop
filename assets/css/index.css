@@ -60,13 +60,21 @@
   user-select: none;
 }
 
-.goods .item .pic {
+.goods .item > .pic {
   position: relative;
   min-height: 280px;
   background: url(../img/banner1.jpg);
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-bottom: 0;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.goods .item .pic .view {
+.goods .item:hover > .pic {
+  border-width: 2px;
+}
+
+.goods .item > .pic .view {
   position: absolute;
   top: 50%;
   left: 0;
@@ -80,10 +88,9 @@
   font-weight: bold;
   transition: 0.5s;
   opacity: 0;
-  cursor: pointer;
 }
 
-.goods .item:hover .pic .view {
+.goods .item:hover > .pic .view {
   opacity: 1;
 }
 
@@ -109,7 +116,17 @@
   transform: scaleX(1);
 }
 
-.goods .item .desc .bi-cart3 {
+.goods .item > .desc {
+  border: 1px solid #ccc;
+  border-radius: 0 0 0.5rem 0.5rem;
+  border-top: 0;
+}
+
+.goods .item:hover > .desc {
+  border-width: 2px;
+}
+
+.goods .item > .desc .bi-cart3 {
   border: 1px solid #81c586;
   width: 1.8rem;
   height: 1.8rem;
@@ -121,7 +138,7 @@
   text-align: center;
 }
 
-.goods .item .desc .bi-heart {
+.goods .item > .desc .bi-heart {
   transition: 0.5s;
   opacity: 0;
   height: 1rem;
@@ -138,12 +155,49 @@
   font-size: 0.8rem;
 }
 
-.goods .item .desc .bi-heart.active {
+.goods .item > .desc .bi-heart.active {
   background-color: #81c586;
   color: #fff;
 }
 
-.goods .item:hover .desc .bi-heart {
+.goods .item:hover > .desc .bi-heart {
   opacity: 1;
   transform: scale(1);
+}
+
+.goods .detail {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(56, 54, 54, 0.5);
+  z-index: 10;
+}
+
+.goods .detail .content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 25%;
+  left: 25%;
+  transform: -50% -50%;
+  width: 50vw;
+  height: 50vh;
+  background-color: #fff;
+  z-index: 100;
+  opacity: 1;
+}
+
+.goods .detail .content .pic {
+  width: 100%;
+  height: 75%;
+  border-radius: 0;
+  background: url(../img/banner1.jpg);
+}
+
+.goods .detail .content .desc {
+  height: 25%;
+  padding: 1rem;
 }
