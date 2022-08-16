@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sticky-sidebar-home">
     <veg-header></veg-header>
   </div>
 </template>
