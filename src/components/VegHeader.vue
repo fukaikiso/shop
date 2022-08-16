@@ -1,151 +1,266 @@
 <template>
   <div>
-    <header class="main-header">
-      <div class="container">
-        <div class="header-inner">
-          <div class="logo">
-            <a href="index.html"><img src="assets/img/logo.png" alt="Main Logo"></a>
-          </div>
+    <header class="header">
+        <div class="header-top">
+            <div class="mobile-header d-flex justify-content-between align-items-center d-xl-none">
+                <!-- <div class="d-flex align-items-center">
+                    <div class="all-catagory-option mobile-device">
+                        <a class="bar-btn"><i class="fas fa-bars"></i>All Catagories</a>
+                        <a class="close-btn"><i class="fas fa-times"></i>All Catagories</a>
+                    </div>
+                    <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="logo"></a>
+                </div> -->
 
-          <div class="categories">
-            <button><i class="flaticon-list"></i>
-              <span>Categories</span></button>
-            <ul>
-              <li><a href="shop.html"><i class="flaticon-apple"></i> Fruits and Vegetables</a></li>
-              <li><a href="shop.html"><i class="flaticon-chicken-hand-drawn-outline"></i> Meat and
-                  Fish</a></li>
-              <li><a href="shop.html"><i class="flaticon-pressure-washer"></i> Home and Cleaning</a></li>
-              <li><a href="shop.html"><i class="flaticon-pest"></i> Pest Control</a></li>
-              <li><a href="shop.html"><i class="flaticon-stationery"></i> Office Products</a></li>
-              <li><a href="shop.html"><i class="flaticon-make-up"></i> Beauty Products</a></li>
-              <li><a href="shop.html"><i class="flaticon-first-aid-kit"></i> Health Products</a></li>
-              <li><a href="shop.html"><i class="flaticon-track"></i> Pet Care</a></li>
-              <li><a href="shop.html"><i class="flaticon-sketch"></i> Home Appliances</a></li>
-              <li><a href="shop.html"><i class="flaticon-baby-boy"></i> Baby Care</a></li>
-            </ul>
-          </div>
+                <div class="all-catagory-option mobile-device">
+                    <a class="bar-btn"><i class="fas fa-bars"></i><span class="ml-2 d-none d-md-inline">All Catagories</span></a>
+                    <a class="close-btn"><i class="fas fa-times"></i><span class="ml-2 d-none d-md-inline">All Catagories</span></a>
+                </div>
+                <a href="index.html" class="logo"><img src="../assets/images/logo.png" alt="logo"></a>
 
-          <form action="#" class="menu-search">
-            <select name="select-category">
-              <option value="option-1">All Categories</option>
-              <option value="option-2">Fruits and Vegetables</option>
-              <option value="option-3">Meat and Fish</option>
-              <option value="option-4">Home and Cleaning</option>
-              <option value="option-5">Pest Control</option>
-              <option value="option-6">Office Products</option>
-              <option value="option-7">Beauty Products</option>
-              <option value="option-8">Health Products</option>
-              <option value="option-9">Pet Care</option>
-              <option value="option-10">Home Appliances</option>
-              <option value="option-11">Baby Care</option>
-            </select>
-            <input type="search" placeholder="Search" required>
-            <button type="submit">Search</button>
-          </form>
+                <!-- search select -->
+                <div class="text-center mobile-search">
+                    <button type="button" data-toggle="modal" data-target="#search-select-id"><i class="fas fa-search"></i></button>
+                </div>
 
-          <div class="menu-collections">
-            <div class="collection-item watch">
-              <i class="flaticon-heart"></i>
-              <div class="collection-inner">
-                <div class="alert single-collection">
-                  <button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
-                  <div class="collection-image">
-                    <img src="assets/img/shop/cart-1.png" alt="">
-                  </div>
-                  <div class="collection-content">
-                    <p>Danish Full Cream Milk</p>
-                    <h6>$120.00</h6>
-                  </div>
+                <!-- menubar -->
+                <div>
+                    <button class="menu-bar" type="button" data-toggle="modal" data-target="#menu-id">
+                        Home<i class="fas fa-caret-down"></i>
+                    </button>
                 </div>
-                <div class="alert single-collection">
-                  <button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
-                  <div class="collection-image">
-                    <img src="assets/img/shop/cart-2.png" alt="">
-                  </div>
-                  <div class="collection-content">
-                    <p>Healthy Yellow Papaya</p>
-                    <h6>$120.00</h6>
-                  </div>
-                </div>
-                <div class="collection-btn">
-                  <a href="cart.html" class="theme-btn bg-blue no-shadow mx-auto">Add to Cart</a>
-                </div>
-              </div>
+
             </div>
-            <div class="collection-item cart">
-              <i class="flaticon-shopping-cart"></i>
-              <div class="collection-inner">
-                <div class="alert single-collection">
-                  <button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
-                  <div class="collection-image">
-                    <img src="assets/img/shop/cart-1.png" alt="">
-                  </div>
-                  <div class="collection-content">
-                    <p>Danish Full Cream Milk</p>
-                    <h6>$120.00</h6>
-                  </div>
+            <div class="d-none d-xl-flex row align-items-center">
+                <div class="col-5 col-md-2">
+                    <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="logo"></a>
                 </div>
-                <div class="alert single-collection">
-                  <button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
-                  <div class="collection-image">
-                    <img src="assets/img/shop/cart-2.png" alt="">
-                  </div>
-                  <div class="collection-content">
-                    <p>Healthy Yellow Papaya</p>
-                    <h6>$120.00</h6>
-                  </div>
+                <div class="col-5 col-md-9 col-lg-5">
+                   
+                    <div class="select-search-option d-none d-md-flex">
+                        <div class="flux-custom-select">
+                            <select>
+                              <option value="0">Select Catagory</option>
+                              <option value="1">Vegetables</option>
+                              <option value="2">Fruits</option>
+                              <option value="3">Salads</option>
+                              <option value="4">Fish & Seafood</option>
+                              <option value="5">Fresh Meat</option>
+                              <option value="6">Health Product</option>
+                              <option value="7">Butter & Eggs</option>
+                              <option value="8">Oils & Venegar</option>
+                              <option value="9">Frozen Food</option>
+                              <option value="10">Jam & Honey</option>
+                            </select>
+                        </div>
+                        <form action="#" class="search-form">
+                            <input type="text" name="search" placeholder="Search for Products">
+                            <button class="submit-btn"><i class="fas fa-search"></i></button>
+                        </form>
+                    </div>
                 </div>
-                <div class="collection-btn">
-                  <a href="cart.html" class="theme-btn bg-blue no-shadow mr-10">View Cart</a>
-                  <a href="checkout.html" class="theme-btn ml-auto no-shadow">Checkout</a>
+                <div class="col-2 col-md-1 col-lg-5">
+                    <ul class="site-action d-none d-lg-flex align-items-center justify-content-between  ml-auto">
+                        <li class="site-phone"><a href=""><i class="fas fa-phone"></i> 000 000 000</a></li>
+                        <li class="site-help"><a href="#"><i class="fas fa-question-circle"></i> Help & More</a></li>
+                        <li class="wish-list"><a href="wishlist.html"><i class="fas fa-heart"></i> <span class="count">04</span></a></li>
+                        <li class="my-account d-none"><a class="dropdown-toggle" href="#" role="button" id="myaccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user mr-1"></i> My Account</a>
+                            <ul class="submenu dropdown-menu" aria-labelledby="myaccount">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="#">Sign Out</a></li>
+                            </ul>
+                        </li>
+                        <li class="signin-option"><a onclick="OpenSignUpForm()" href="#"><i class="fas fa-user mr-2"></i>Sign In</a></li>
+                    </ul>
                 </div>
-              </div>
-            </div>
-            <div class="collection-item profile">
-              <i class="flaticon-user-1"></i>
-              <div class="collection-inner">
-                <ul>
-                  <li><a href="cart.html">Cart</a></li>
-                  <li><a href="checkout.html">Checkout</a></li>
-                  <li><a href="sign-in.html">Login</a></li>
-                  <li><a href="sign-up.html">Sign Up</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
 
-          <div class="main-menu">
-            <button><i class="flaticon-list-menu"></i></button>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li class="dropdown"><a href="#">Blog</a>
-                <ul>
-                  <li><a href="blog.html">All Blog</a></li>
-                  <li><a href="blog-details.html">Blog Details</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="#">Shop</a>
-                <ul>
-                  <li><a href="shop.html">Shop Page</a></li>
-                  <li><a href="shop-details.html">Shop Details</a></li>
-                  <li><a href="cart.html">Cart Page</a></li>
-                  <li><a href="checkout.html">Checkout</a></li>
-                </ul>
-              </li>
-              <li class="dropdown"><a href="#">Pages</a>
-                <ul>
-                  <li><a href="sign-in.html">Sign In</a></li>
-                  <li><a href="sign-up.html">Sign Up</a></li>
-                </ul>
-              </li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="menu-overlay"></div>
-          </div>
+            </div>
         </div>
-      </div>
-      <div class="collection-close"></div>
+        <hr>
+        <div class="header-bottom">
+            <div class="row m-0 align-items-center">
+                <div class="col-md-2 p-0 d-none d-xl-block">
+                    <div class="all-catagory-option">
+                        <a class="bar-btn"><i class="fas fa-bars"></i>All Catagories</a>
+                        <a class="close-btn"><i class="fas fa-times"></i>All Catagories</a>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="menu-area d-none d-xl-flex justify-content-between align-items-center">
+                        <ul class="menu d-xl-flex flex-wrap list-unstyled">
+                            <li class="item-has-children"><a class="active" href="index.html">Home <i class="fas fa-angle-down"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="home-default.html">Home Default</a></li>
+                                    <li><a class="active" href="index.html">Home Sticky Sidebar</a></li>
+                                    <li><a href="home-search.html">Home Search</a></li>
+                                    <li><a href="home-slider.html">Home Slider</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">New Products</a></li>
+                            <li class="item-has-mega-menu"><a href="#">Featured Products <i class="fas fa-angle-down"></i></a>
+                                <div class="mega-menu-container">
+                                    <div class="row m-0">
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title">Vegetables</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title">Frouts</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title">Salads</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title">Health Care</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title">Vegetables</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title">Frouts</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title">Salads</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title">Health Care</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title active">Fruits</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a class="active" href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title">Vegetables</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title">Health Care</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="ctagory-item">
+                                                <h6 class="title">Fruits</h6>
+                                                <ul>
+                                                    <li><a href="product-list.html">Artichoke.</a></li>
+                                                    <li><a href="product-list.html">Aubergune(eggpiant)</a></li>
+                                                    <li><a href="product-list.html">Asparagus</a></li>
+                                                    <li><a href="product-list.html">Broccoflower(a hyrbid)</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-has-children"><a href="index.html">Pages <i class="fas fa-angle-down"></i></a>
+                                <ul class="submenu">
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="product-list.html">Product List</a></li>
+                                    <li><a href="product-leftsidebar.html">Product leftsidebar</a></li>
+                                    <li><a href="product-fullwidth.html">Product Fullwidth</a></li>
+                                    <li><a href="product-detail.html">Product Details</a></li>
+                                    <li><a href="checkout.html">Checkout</a></li>
+                                    <li><a href="user-dashbord.html">User Dashboard</a></li>
+                                    <li><a href="profile.html">Profile</a></li>
+                                    <li><a href="track-order.html">Track Order</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                        <ul class="menu-action d-none d-lg-block">
+                            <li class="cart-option"><a onclick="cartopen()" href="#"><span class="cart-icon"><i class="fas fa-shopping-cart"></i><span class="count">3</span></span> <span class="cart-amount">$15.00</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
+    <!-- header section end -->
   </div>
 </template>
 
