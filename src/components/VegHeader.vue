@@ -1,0 +1,157 @@
+<template>
+  <div>
+    <header class="main-header">
+      <div class="container">
+        <div class="header-inner">
+          <div class="logo">
+            <a href="index.html"><img src="assets/img/logo.png" alt="Main Logo"></a>
+          </div>
+
+          <div class="categories">
+            <button><i class="flaticon-list"></i>
+              <span>Categories</span></button>
+            <ul>
+              <li><a href="shop.html"><i class="flaticon-apple"></i> Fruits and Vegetables</a></li>
+              <li><a href="shop.html"><i class="flaticon-chicken-hand-drawn-outline"></i> Meat and
+                  Fish</a></li>
+              <li><a href="shop.html"><i class="flaticon-pressure-washer"></i> Home and Cleaning</a></li>
+              <li><a href="shop.html"><i class="flaticon-pest"></i> Pest Control</a></li>
+              <li><a href="shop.html"><i class="flaticon-stationery"></i> Office Products</a></li>
+              <li><a href="shop.html"><i class="flaticon-make-up"></i> Beauty Products</a></li>
+              <li><a href="shop.html"><i class="flaticon-first-aid-kit"></i> Health Products</a></li>
+              <li><a href="shop.html"><i class="flaticon-track"></i> Pet Care</a></li>
+              <li><a href="shop.html"><i class="flaticon-sketch"></i> Home Appliances</a></li>
+              <li><a href="shop.html"><i class="flaticon-baby-boy"></i> Baby Care</a></li>
+            </ul>
+          </div>
+
+          <form action="#" class="menu-search">
+            <select name="select-category">
+              <option value="option-1">All Categories</option>
+              <option value="option-2">Fruits and Vegetables</option>
+              <option value="option-3">Meat and Fish</option>
+              <option value="option-4">Home and Cleaning</option>
+              <option value="option-5">Pest Control</option>
+              <option value="option-6">Office Products</option>
+              <option value="option-7">Beauty Products</option>
+              <option value="option-8">Health Products</option>
+              <option value="option-9">Pet Care</option>
+              <option value="option-10">Home Appliances</option>
+              <option value="option-11">Baby Care</option>
+            </select>
+            <input type="search" placeholder="Search" required>
+            <button type="submit">Search</button>
+          </form>
+
+          <div class="menu-collections">
+            <div class="collection-item watch">
+              <i class="flaticon-heart"></i>
+              <div class="collection-inner">
+                <div class="alert single-collection">
+                  <button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
+                  <div class="collection-image">
+                    <img src="assets/img/shop/cart-1.png" alt="">
+                  </div>
+                  <div class="collection-content">
+                    <p>Danish Full Cream Milk</p>
+                    <h6>$120.00</h6>
+                  </div>
+                </div>
+                <div class="alert single-collection">
+                  <button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
+                  <div class="collection-image">
+                    <img src="assets/img/shop/cart-2.png" alt="">
+                  </div>
+                  <div class="collection-content">
+                    <p>Healthy Yellow Papaya</p>
+                    <h6>$120.00</h6>
+                  </div>
+                </div>
+                <div class="collection-btn">
+                  <a href="cart.html" class="theme-btn bg-blue no-shadow mx-auto">Add to Cart</a>
+                </div>
+              </div>
+            </div>
+            <div class="collection-item cart">
+              <i class="flaticon-shopping-cart"></i>
+              <div class="collection-inner">
+                <div class="alert single-collection">
+                  <button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
+                  <div class="collection-image">
+                    <img src="assets/img/shop/cart-1.png" alt="">
+                  </div>
+                  <div class="collection-content">
+                    <p>Danish Full Cream Milk</p>
+                    <h6>$120.00</h6>
+                  </div>
+                </div>
+                <div class="alert single-collection">
+                  <button data-dismiss="alert"><i class="flaticon-delete-button"></i></button>
+                  <div class="collection-image">
+                    <img src="assets/img/shop/cart-2.png" alt="">
+                  </div>
+                  <div class="collection-content">
+                    <p>Healthy Yellow Papaya</p>
+                    <h6>$120.00</h6>
+                  </div>
+                </div>
+                <div class="collection-btn">
+                  <a href="cart.html" class="theme-btn bg-blue no-shadow mr-10">View Cart</a>
+                  <a href="checkout.html" class="theme-btn ml-auto no-shadow">Checkout</a>
+                </div>
+              </div>
+            </div>
+            <div class="collection-item profile">
+              <i class="flaticon-user-1"></i>
+              <div class="collection-inner">
+                <ul>
+                  <li><a href="cart.html">Cart</a></li>
+                  <li><a href="checkout.html">Checkout</a></li>
+                  <li><a href="sign-in.html">Login</a></li>
+                  <li><a href="sign-up.html">Sign Up</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="main-menu">
+            <button><i class="flaticon-list-menu"></i></button>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li class="dropdown"><a href="#">Blog</a>
+                <ul>
+                  <li><a href="blog.html">All Blog</a></li>
+                  <li><a href="blog-details.html">Blog Details</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#">Shop</a>
+                <ul>
+                  <li><a href="shop.html">Shop Page</a></li>
+                  <li><a href="shop-details.html">Shop Details</a></li>
+                  <li><a href="cart.html">Cart Page</a></li>
+                  <li><a href="checkout.html">Checkout</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#">Pages</a>
+                <ul>
+                  <li><a href="sign-in.html">Sign In</a></li>
+                  <li><a href="sign-up.html">Sign Up</a></li>
+                </ul>
+              </li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="menu-overlay"></div>
+          </div>
+        </div>
+      </div>
+      <div class="collection-close"></div>
+    </header>
+  </div>
+</template>
+
+<script>
+  export default {
+  
+  }
+</script>
+
