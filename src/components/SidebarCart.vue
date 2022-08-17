@@ -1,5 +1,15 @@
 <template>
   <div>
+     <a class="position-absolute" href="javascript:void(0)" onclick="cartopen()">
+        <div id="sitebar-drawar" class="sitebar-drawar">
+            <div class="cart-count d-flex align-items-center">
+                <i class="fas fa-shopping-basket"></i>
+                <span>3 Item</span>
+            </div>
+            <div class="total-price">$15.00</div>
+        </div>
+    </a>
+
     <!-- sidebar-cart -->
     <div id="sitebar-cart" class="sitebar-cart">
         <div class="sc-head d-flex justify-content-between align-items-center">
