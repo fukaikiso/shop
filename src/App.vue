@@ -7,4 +7,5 @@
 <style lang="scss">
 @import url('@/assets/css/normalize.css');
 @import url('@/assets/css/common.css');
+@import url('@/assets/css/config.css');
 </style>
