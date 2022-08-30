@@ -1,8 +1,11 @@
 <template>
   <div class="veg-product-card">
-    <div class="item">
+    <div
+      class="item"
+      @click="$router.push('/product-details')">
       <div class="sale">-10%</div>
-      <div class="favorite"></div>
+      <!-- <div class="favorite"></div> -->
+      <veg-favorite></veg-favorite>
       <img
         src="/images/products/01.png"
         alt="" />
@@ -11,12 +14,15 @@
       <div class="bottom">
         <span class="sale-price">￥8.00</span>
         <span class="pre-price">￥10.00</span>
-        <button>加入购物车</button>
+        <button>查看详情</button>
       </div>
     </div>
-    <div class="item">
+    <div
+      class="item"
+      @click="$router.push('/product-details')">
       <div class="sale">-10%</div>
-      <div class="favorite"></div>
+      <!-- <div class="favorite"></div> -->
+      <veg-favorite></veg-favorite>
       <img
         src="/images/products/01.png"
         alt="" />
@@ -25,12 +31,15 @@
       <div class="bottom">
         <span class="sale-price">￥8.00</span>
         <span class="pre-price">￥10.00</span>
-        <button>加入购物车</button>
+        <button>查看详情</button>
       </div>
     </div>
-    <div class="item">
+    <div
+      class="item"
+      @click="$router.push('/product-details')">
       <div class="sale">-10%</div>
-      <div class="favorite"></div>
+      <!-- <div class="favorite"></div> -->
+      <veg-favorite></veg-favorite>
       <img
         src="/images/products/01.png"
         alt="" />
@@ -39,12 +48,15 @@
       <div class="bottom">
         <span class="sale-price">￥8.00</span>
         <span class="pre-price">￥10.00</span>
-        <button>加入购物车</button>
+        <button>查看详情</button>
       </div>
     </div>
-    <div class="item">
+    <div
+      class="item"
+      @click="$router.push('/product-details')">
       <div class="sale">-10%</div>
-      <div class="favorite"></div>
+      <!-- <div class="favorite"></div> -->
+      <veg-favorite></veg-favorite>
       <img
         src="/images/products/01.png"
         alt="" />
@@ -53,14 +65,17 @@
       <div class="bottom">
         <span class="sale-price">￥8.00</span>
         <span class="pre-price">￥10.00</span>
-        <button>加入购物车</button>
+        <button>查看详情</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+import VegFavorite from './VegFavorite.vue';
+export default {
+  components: { VegFavorite },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -76,7 +91,7 @@ export default {};
   }
   .item {
     position: relative;
-    width: 220px;
+    width: 230px;
     background-color: #fff;
     padding: 10px 20px 25px;
     border-radius: 5px;
@@ -90,26 +105,6 @@ export default {};
       color: #fff;
       padding: 4px 8px;
       font-size: 14px;
-    }
-    .favorite {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background-color: #fbbbbb;
-      width: 30px;
-      height: 30px;
-      border-radius: 15px;
-    }
-    .favorite::after {
-      content: '❤';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      color: #fff;
-      transform: translate(-50%, -50%);
-    }
-    .favorite:hover::after {
-      color: var(--theme-danger-color);
     }
     img {
       width: 100%;
