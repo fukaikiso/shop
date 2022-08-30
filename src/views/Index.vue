@@ -1,6 +1,6 @@
 <template>
   <div>
-    <sidebar-cart></sidebar-cart>
+    <veg-sidebar-cart></veg-sidebar-cart>
     <veg-header></veg-header>
     <div class="main">
       <div class="container">
@@ -52,9 +52,9 @@ import VegHeader from '@/components/VegHeader.vue';
 import VegFooter from '@/components/VegFooter.vue';
 import VegProductHeader from '@/components/VegProductHeader.vue';
 import VegProductFloor from '@/components/VegProductFloor.vue';
-import SidebarCart from '@/components/SidebarCart.vue';
+import VegSidebarCart from '@/components/VegSidebarCart.vue';
 export default {
-  components: { VegHeader, VegFooter, VegProductHeader, VegProductFloor, SidebarCart },
+  components: { VegHeader, VegFooter, VegProductHeader, VegProductFloor, VegSidebarCart },
   data() {
     return {
       categoryActive: -1,

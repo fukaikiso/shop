@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar-cart">
+  <div class="veg-sidebar-cart">
     <div class="top">
       <svg
         t="1661853737519"
@@ -30,7 +30,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-.sidebar-cart {
+.veg-sidebar-cart {
   cursor: pointer;
   position: fixed;
   display: flex;
@@ -58,6 +58,7 @@ export default {};
     cursor: pointer;
     padding: 10px 20px;
     border-radius: 5px;
+    background-color: #fff;
   }
 }
 </style>

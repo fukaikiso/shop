@@ -1,10 +1,12 @@
 <template>
   <div class="veg-product-card">
     <div class="item">
+      <div class="sale">-10%</div>
+      <div class="favorite"></div>
       <img
         src="/images/products/01.png"
         alt="" />
-      <h3>上海青</h3>
+      <h4>上海青</h4>
       <p>1kg</p>
       <div class="bottom">
         <span class="sale-price">￥8.00</span>
@@ -13,10 +15,12 @@
       </div>
     </div>
     <div class="item">
+      <div class="sale">-10%</div>
+      <div class="favorite"></div>
       <img
         src="/images/products/01.png"
         alt="" />
-      <h3>上海青</h3>
+      <h4>上海青</h4>
       <p>1kg</p>
       <div class="bottom">
         <span class="sale-price">￥8.00</span>
@@ -25,10 +29,12 @@
       </div>
     </div>
     <div class="item">
+      <div class="sale">-10%</div>
+      <div class="favorite"></div>
       <img
         src="/images/products/01.png"
         alt="" />
-      <h3>上海青</h3>
+      <h4>上海青</h4>
       <p>1kg</p>
       <div class="bottom">
         <span class="sale-price">￥8.00</span>
@@ -37,10 +43,12 @@
       </div>
     </div>
     <div class="item">
+      <div class="sale">-10%</div>
+      <div class="favorite"></div>
       <img
         src="/images/products/01.png"
         alt="" />
-      <h3>上海青</h3>
+      <h4>上海青</h4>
       <p>1kg</p>
       <div class="bottom">
         <span class="sale-price">￥8.00</span>
@@ -67,12 +75,42 @@ export default {};
     box-shadow: 0 0 5px 0 #aaa;
   }
   .item {
+    position: relative;
     width: 220px;
     background-color: #fff;
     padding: 10px 20px 25px;
     border-radius: 5px;
     transition: transform 0.05s;
     -webkit-font-smoothing: antialiased;
+    .sale {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: var(--theme-warning-color);
+      color: #fff;
+      padding: 4px 8px;
+      font-size: 14px;
+    }
+    .favorite {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #fbbbbb;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+    }
+    .favorite::after {
+      content: '❤';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      color: #fff;
+      transform: translate(-50%, -50%);
+    }
+    .favorite:hover::after {
+      color: var(--theme-danger-color);
+    }
     img {
       width: 100%;
     }
@@ -86,11 +124,13 @@ export default {};
       align-items: center;
       .sale-price {
         color: var(--theme-primary-color);
+        font-size: 14px;
       }
       .pre-price {
         color: #aaa;
         text-decoration: line-through;
         margin: 0 8px;
+        font-size: 14px;
       }
       button {
         position: absolute;
@@ -100,6 +140,7 @@ export default {};
         background-color: #fff;
         border-radius: 5px;
         color: var(--theme-primary-color);
+        font-size: 14px;
       }
       button:hover {
         cursor: pointer;
