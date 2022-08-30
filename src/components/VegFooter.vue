@@ -36,13 +36,13 @@
       <div class="app">
         <h4>下载客户端</h4>
         <img
-          src="../assets/images/app-store/apple.png"
+          src="@/assets/images/app-store/apple.png"
           alt="apple store" />
         <img
-          src="../assets/images/app-store/google.png"
+          src="@/assets/images/app-store/google.png"
           alt="google store" />
         <img
-          src="../assets/images/payment/01.png"
+          src="@/assets/images/payment/01.png"
           alt="payment" />
       </div>
     </div>
