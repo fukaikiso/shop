@@ -1,5 +1,6 @@
 <template>
   <div>
+    <sidebar-cart></sidebar-cart>
     <veg-header></veg-header>
     <div class="main">
       <div class="container">
@@ -51,8 +52,9 @@ import VegHeader from '@/components/VegHeader.vue';
 import VegFooter from '@/components/VegFooter.vue';
 import VegProductHeader from '@/components/VegProductHeader.vue';
 import VegProductFloor from '@/components/VegProductFloor.vue';
+import SidebarCart from '@/components/SidebarCart.vue';
 export default {
-  components: { VegHeader, VegFooter, VegProductHeader, VegProductFloor },
+  components: { VegHeader, VegFooter, VegProductHeader, VegProductFloor, SidebarCart },
   data() {
     return {
       categoryActive: -1,
@@ -123,7 +125,7 @@ export default {
 <style lang="scss" scoped>
 .main {
   background-color: var(--theme-bg-color);
-  padding: 40px 0;
+  padding-bottom: 40px;
 
   .banner {
     position: relative;

@@ -64,7 +64,7 @@ export default {};
   .item:hover {
     cursor: pointer;
     transform: scale(1.1);
-    box-shadow: 1px 1px 3px 0 #aaa;
+    box-shadow: 0 0 5px 0 #aaa;
   }
   .item {
     width: 220px;
