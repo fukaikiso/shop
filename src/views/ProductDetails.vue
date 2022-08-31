@@ -17,15 +17,8 @@
             <div class="content">
               <h3>海南香蕉</h3>
               <p class="unit">1kg</p>
-              <p class="price">￥12.00</p>
-              <div class="counter">
-                <span @click="calCount(-1)">-</span>
-                <input
-                  class="count"
-                  type="text"
-                  v-model="count" />
-                <span @click="calCount(1)">+</span>
-              </div>
+              <p class="price">￥{{ total }}</p>
+              <veg-counter></veg-counter>
               <div class="desc">精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉</div>
             </div>
             <button class="buy">加入购物车</button>
@@ -41,7 +34,7 @@
           <!-- 评论 -->
           <div class="review">评论</div>
           <!-- 详情 -->
-          <div class="detials">精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉</div>
+          <div class="detials">精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉 精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉</div>
           <!-- 售后 -->
           <div class="service">售后</div>
         </div>
@@ -56,29 +49,20 @@ import VegHeader from '@/components/VegHeader.vue';
 import VegFooter from '@/components/VegFooter.vue';
 import VegFavorite from '@/components/VegFavorite.vue';
 import VegSidebarCart from '@/components/VegSidebarCart.vue';
+import VegCounter from '@/components/VegCounter.vue';
 export default {
-  components: { VegHeader, VegFooter, VegFavorite, VegSidebarCart },
+  components: { VegHeader, VegFooter, VegFavorite, VegSidebarCart, VegCounter },
   data() {
     return {
       count: 1,
+      price: 12.4,
     };
   },
-  methods: {
-    calCount(num) {
-      //v-model输入的值为字符串
-      this.count = parseInt(this.count);
-      this.count += num;
-    },
-  },
-  watch: {
-    // 监测输入的数量为0~99的值，否则保持旧值
-    count(newValue, oldValue) {
-      let reg = /^([1-9]\d|[1-9])$/;
-      if (reg.test(newValue)) {
-        this.count = newValue;
-      } else {
-        this.count = oldValue;
-      }
+  computed: {
+    total() {
+      let result = this.count * this.price;
+      result = result.toFixed(2);
+      return result;
     },
   },
 };
@@ -138,32 +122,6 @@ export default {
               font-weight: bold;
               font-size: 24px;
             }
-            .counter {
-              display: flex;
-              padding: 3px 8px;
-              height: 30px;
-              width: 80px;
-              line-height: 30px;
-              text-align: center;
-              background-color: var(--theme-primary-color);
-              border-radius: 5px;
-              color: #fff;
-              > span {
-                flex: 1;
-                cursor: pointer;
-                user-select: none;
-              }
-              > .count {
-                color: #fff;
-                font-size: 14px;
-                width: 40%;
-                background-color: var(--theme-primary-color);
-                text-align: center;
-              }
-              .desc {
-                text-align: justify;
-              }
-            }
           }
           .buy {
             position: absolute;
@@ -176,7 +134,7 @@ export default {
             cursor: pointer;
           }
           .buy:active {
-            background-color: #379309;
+            background-color: var(--theme-click-color);
           }
         }
       }

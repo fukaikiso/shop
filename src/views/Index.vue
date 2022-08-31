@@ -1,5 +1,6 @@
 <template>
   <div>
+    <veg-sidebar-cart-details></veg-sidebar-cart-details>
     <veg-sidebar-cart></veg-sidebar-cart>
     <veg-header></veg-header>
     <div class="main">
@@ -26,11 +27,11 @@
             v-for="(c, i) in productCatagories"
             :key="c.cid">
             <img
-              v-if="categoryActive == i"
+              v-show="categoryActive == i"
               :src="c.activeIcon"
               alt="" />
             <img
-              v-else
+              v-show="categoryActive != i"
               :src="c.icon"
               alt="" />
             <p>{{ c.title }}</p>
@@ -53,8 +54,9 @@ import VegFooter from '@/components/VegFooter.vue';
 import VegProductHeader from '@/components/VegProductHeader.vue';
 import VegProductFloor from '@/components/VegProductFloor.vue';
 import VegSidebarCart from '@/components/VegSidebarCart.vue';
+import VegSidebarCartDetails from '@/components/VegSidebarCartDetails.vue';
 export default {
-  components: { VegHeader, VegFooter, VegProductHeader, VegProductFloor, VegSidebarCart },
+  components: { VegHeader, VegFooter, VegProductHeader, VegProductFloor, VegSidebarCart, VegSidebarCartDetails },
   data() {
     return {
       categoryActive: -1,
