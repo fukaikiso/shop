@@ -14,13 +14,9 @@
 
 <script>
 export default {
+  props: ['pathList'],
   data() {
-    return {
-      pathList: [
-        { pid: 1, title: '首页', href: '/' },
-        { pid: 2, title: '商品详情', href: '/product-details' },
-      ],
-    };
+    return {};
   },
 };
 </script>
