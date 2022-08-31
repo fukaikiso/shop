@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <veg-header></veg-header>
-    <veg-breadcrumb :path-list="pathList"></veg-breadcrumb>
+    <veg-breadcrumb :path-list="$route.meta.pathList"></veg-breadcrumb>
     <div class="main">
       <div class="container">
         <div class="content">
@@ -27,12 +27,7 @@ import VegFooter from '@/components/VegFooter.vue';
 export default {
   components: { VegHeader, VegBreadcrumb, VegFooter },
   data() {
-    return {
-      pathList: [
-        { pid: 1, title: '首页', href: '/' },
-        { pid: 2, title: '关于我们', href: '/about' },
-      ],
-    };
+    return {};
   },
 };
 </script>

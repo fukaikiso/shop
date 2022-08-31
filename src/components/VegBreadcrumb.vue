@@ -1,4 +1,5 @@
 <template>
+  <!-- 面包屑导航，信息存于路由配置的meta中 -->
   <div class="veg-breadcrumb">
     <div class="container">
       <div

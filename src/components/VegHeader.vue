@@ -11,7 +11,7 @@
       <div class="navigation">
         <router-link to="/">首页</router-link>
         <router-link to="/">最新上架</router-link>
-        <router-link to="/">商品分类</router-link>
+        <router-link to="/user">用户中心</router-link>
         <router-link to="/about">关于我们</router-link>
       </div>
       <!-- 电话 -->
