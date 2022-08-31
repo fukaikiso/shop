@@ -1,11 +1,17 @@
 <template>
-  <div class="veg-sidebar-cart-details">
+  <div
+    class="veg-sidebar-cart-details"
+    :class="{ show: isShowDetails }">
     <div class="header">
       <img
         src="@/assets/images/sidebar/shopping.png"
         alt="" />
       <span class="title">购物车</span>
-      <span class="close">x</span>
+      <span
+        class="close"
+        @click="changeShow"
+        >x</span
+      >
     </div>
     <!-- 购物项 -->
     <div class="main">
@@ -53,19 +59,33 @@
 import VegCounter from './VegCounter.vue';
 export default {
   components: { VegCounter },
+  props: ['isShowDetails'],
+  data() {
+    return {};
+  },
+  methods: {
+    changeShow() {
+      this.$parent.switchIsShowDetails();
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.veg-sidebar-cart-details.show {
+  right: 0;
+  transition: right 1s;
+}
 .veg-sidebar-cart-details {
   position: fixed;
   top: 0;
   bottom: 0;
-  right: 0;
+  right: -300px;
   z-index: 10;
   background-color: #fff;
   width: 300px;
   box-shadow: 0 0 10px 0 #aaa;
+  transition: right 1s;
 
   .header {
     display: flex;
@@ -143,7 +163,7 @@ export default {
   }
 
   .footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     right: 0;
     display: flex;
