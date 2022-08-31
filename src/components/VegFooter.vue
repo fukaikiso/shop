@@ -58,7 +58,7 @@ export default {};
 <style lang="scss" scoped>
 .veg-footer {
   border-top: 1px solid #ccc;
-  // background-color: var(--theme-bg-color);
+  background-color: #fff;
   .container {
     border-bottom: 1px solid #ccc;
     padding: 20px 0;
