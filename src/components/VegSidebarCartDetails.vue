@@ -81,7 +81,7 @@ export default {
   top: 0;
   bottom: 0;
   right: -300px;
-  z-index: 10;
+  z-index: 20;
   background-color: #fff;
   width: 300px;
   box-shadow: 0 0 10px 0 #aaa;

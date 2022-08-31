@@ -23,7 +23,7 @@
             fill="#ffffff"
             p-id="2364"></path>
         </svg>
-        <div class="count">数量：3</div>
+        <div class="count">3 件</div>
       </div>
       <button class="amount">￥15.00</button>
     </div>
@@ -59,18 +59,20 @@ export default {
     justify-content: space-between;
     top: 30%;
     right: 0;
-    width: 100px;
-    height: 80px;
-    padding: 20px 20px;
+    width: 80px;
+    height: 60px;
+    font-size: 14px;
+    padding: 20px 15px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background-color: var(--theme-primary-color);
+    z-index: 10;
     .top {
       display: flex;
       align-items: center;
       .count {
         color: #fff;
-        margin-left: 10px;
+        margin-left: 5px;
       }
     }
     .amount {
