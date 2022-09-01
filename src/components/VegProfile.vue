@@ -5,15 +5,15 @@
     <div class="info">
       <div class="item">
         <h4>昵称</h4>
-        <p>{{ userInfo.nickname }}</p>
+        <p>{{ $store.state.userInfo.username }}</p>
       </div>
       <div class="item">
-        <h4>邮箱</h4>
-        <p>{{ userInfo.email }}</p>
+        <h4>简介</h4>
+        <p>{{ $store.state.userInfo.description }}</p>
       </div>
       <div class="item">
         <h4>电话</h4>
-        <p>{{ userInfo.phone }}</p>
+        <p>{{ $store.state.userInfo.phone }}</p>
       </div>
       <!-- 修改图标 -->
       <img
@@ -72,10 +72,10 @@
               v-model="userInfo.nickname" />
           </div>
           <div class="item">
-            <p class="title">邮箱</p>
+            <p class="title">简介</p>
             <input
               type="text"
-              v-model="userInfo.email" />
+              v-model="userInfo.description" />
           </div>
           <div class="item">
             <p class="title">电话</p>
@@ -154,7 +154,7 @@ export default {
   components: { VegModifyAddress },
   data() {
     return {
-      userInfo: { nickname: '积极买菜人', email: 'jjmcr@163.com', phone: '15098121452' },
+      userInfo: { nickname: '积极买菜人', description: 'jjmcr@163.com', phone: '15098121452' },
       userAddress: [
         { aid: 1, title: '学校', address: '湖北省武汉市洪山区关山口', code: '400400' },
         { aid: 2, title: '家庭', address: '广东省广州市番禺区', code: '540400' },

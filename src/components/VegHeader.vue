@@ -21,11 +21,23 @@
           alt="phone" />
         <span>0000 0000 0000</span>
       </div>
+      <div
+        class="hello"
+        v-if="$store.state.isLogin">
+        你好，{{ $store.state.userInfo.username }}
+      </div>
       <!-- 登录收藏购物车 -->
       <div class="user">
+        <div
+          v-if="$store.state.isLogin"
+          class="logout"
+          @click="logout">
+          退出
+        </div>
         <router-link
           to="/login"
           class="login"
+          v-else
           >登录</router-link
         >
         <router-link
@@ -78,7 +90,16 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    logout() {
+      this.$store.commit('removeToken');
+      this.$store.commit('switchIsLogin');
+      alert('退出成功');
+      this.$router.push('/');
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -120,14 +141,17 @@ export default {};
       justify-content: space-between;
       align-items: center;
 
-      .login {
+      .login,
+      .logout {
         background-color: var(--theme-danger-color);
         color: #fff;
         padding: 7px 14px;
         border-radius: 5px;
+        cursor: pointer;
       }
 
-      .login:hover {
+      .login:hover,
+      .logout:hover {
         background-color: rgb(242, 28, 28);
         cursor: pointer;
       }

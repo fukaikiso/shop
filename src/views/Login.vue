@@ -83,18 +83,23 @@ export default {
   },
   methods: {
     login() {
-      // const url = '/login';
-      // const params = `username=${this.username}&password=${this.password}`;
-      // this.axios.post(url, params).then((res) => {
-      //   if (res.data.code == 200) {
-      //     alert('登录成功');
-      //     this.$router.push('/');
-      //   } else if (res.data.code == 201) {
-      //     alert('用户名不存在或密码错误');
-      //   } else {
-      //     alert('登录失败');
-      //   }
-      // });
+      const url = '/login';
+      const params = `username=${this.username}&password=${this.password}`;
+      this.axios.post(url, params).then((res) => {
+        if (res.data.code == 200) {
+          alert('登录成功');
+          // 存储token
+          localStorage.setItem('token', res.data.token);
+          this.$store.commit('setToken', res.data.token);
+          this.$store.commit('switchIsLogin');
+          this.$store.commit('updateUserInfo', res.data.result);
+          this.$router.push('/');
+        } else if (res.data.code == 201) {
+          alert('用户名不存在或密码错误');
+        } else {
+          alert('登录失败');
+        }
+      });
     },
   },
   computed: {

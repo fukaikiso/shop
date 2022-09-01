@@ -142,12 +142,28 @@ const routes = [
   },
 ];
 
+//跳转时，页面滚动回0
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  //跳转时，页面滚动回0
   scrollBehavior: () => ({ y: 0 }),
   routes,
+});
+
+//重复跳转至同一页面不报错
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch((err) => err);
+};
+
+// 路由守卫，当LocalStorage无token时，跳转至登录
+router.beforeEach((to, from, next) => {
+  const isLogin = localStorage.token ? true : false;
+  if (to.path == '/login' || to.path == '/register') {
+    next();
+  } else {
+    isLogin ? next() : next('/login');
+  }
 });
 
 export default router;

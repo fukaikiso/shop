@@ -11,7 +11,7 @@
             src="/images/admin/thumb.jpg"
             alt="用户头像"
             class="avatar" />
-          <h3>积极买菜人</h3>
+          <h3>{{ $store.state.userInfo.username }}</h3>
           <p>这个人很懒，什么都没写~</p>
         </div>
       </div>
