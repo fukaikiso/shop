@@ -16,6 +16,11 @@
     <!-- 购物项 -->
     <div class="main">
       <div
+        class="none"
+        v-if="cartItems.length == 0">
+        购物车空空如也
+      </div>
+      <div
         class="item"
         v-for="(c, i) in cartItems"
         :key="i">
@@ -60,13 +65,17 @@
         <h4>总价</h4>
         <p>￥{{ (totalPrice - saveMoney) | salePrice }}</p>
       </div>
-      <button>结算购物车</button>
+      <router-link
+        class="button"
+        to="/checkout"
+        >结算购物车</router-link
+      >
     </div>
   </div>
 </template>
 
 <script>
-import VegCounter from './VegCounter.vue';
+import VegCounter from '@/components/VegCounter.vue';
 export default {
   components: { VegCounter },
   props: ['isShowDetails'],
@@ -177,6 +186,10 @@ export default {
     display: flex;
     width: 300px;
     flex-direction: column;
+    .none {
+      text-align: center;
+      padding: 20px;
+    }
     .item {
       display: flex;
       position: relative;
@@ -214,6 +227,7 @@ export default {
           height: 60%;
           h3 {
             margin-bottom: 10px;
+            font-size: 16px;
           }
         }
         .price {
@@ -253,15 +267,16 @@ export default {
       justify-content: space-between;
       padding: 5px 0;
     }
-    button {
+    .button {
       background-color: var(--theme-primary-color);
       color: #fff;
       padding: 10px 0;
       margin: 20px 10px 10px;
       border-radius: 5px;
       cursor: pointer;
+      text-align: center;
     }
-    button:active {
+    .button:active {
       background-color: var(--theme-click-color);
     }
   }

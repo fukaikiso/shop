@@ -1,8 +1,6 @@
 <template>
   <div>
-    <veg-sidebar-cart-details></veg-sidebar-cart-details>
     <veg-sidebar-cart></veg-sidebar-cart>
-    <veg-header></veg-header>
     <div class="main">
       <div class="container">
         <div class="banner">
@@ -17,7 +15,8 @@
         <!-- 商品分类 -->
         <veg-product-header
           title="商品分类"
-          circleColor="#59b828"></veg-product-header>
+          circleColor="#59b828"
+          :showArrow="false"></veg-product-header>
         <div class="category">
           <div
             @click="goToCategory(c.path)"
@@ -38,25 +37,26 @@
           </div>
         </div>
         <!-- 新品上架 -->
-        <veg-product-floor title="新品上架"></veg-product-floor>
-        <veg-product-floor title="热销商品"></veg-product-floor>
-        <veg-product-floor title="推荐购买"></veg-product-floor>
+        <veg-product-floor
+          title="新品上架"
+          link="/products?sort=new"></veg-product-floor>
+        <veg-product-floor
+          title="热销商品"
+          link="/products?sort=hot"></veg-product-floor>
+        <veg-product-floor
+          title="推荐购买"
+          link="/products?sort=recommand"></veg-product-floor>
       </div>
     </div>
-
-    <veg-footer></veg-footer>
   </div>
 </template>
 
 <script>
-import VegHeader from '@/components/VegHeader.vue';
-import VegFooter from '@/components/VegFooter.vue';
 import VegProductHeader from '@/components/VegProductHeader.vue';
 import VegProductFloor from '@/components/VegProductFloor.vue';
 import VegSidebarCart from '@/components/VegSidebarCart.vue';
-import VegSidebarCartDetails from '@/components/VegSidebarCartDetails.vue';
 export default {
-  components: { VegHeader, VegFooter, VegProductHeader, VegProductFloor, VegSidebarCart, VegSidebarCartDetails },
+  components: { VegProductHeader, VegProductFloor, VegSidebarCart },
   data() {
     return {
       categoryActive: -1,
@@ -66,49 +66,49 @@ export default {
           title: '蔬菜',
           icon: '/images/category/vegetable.png',
           activeIcon: '/images/category/vegetable-active.png',
-          path: '/vegetable',
+          path: '/products?category=vegetable',
         },
         {
           cid: 2,
           title: '水果',
           icon: '/images/category/fruit.png',
           activeIcon: '/images/category/fruit-active.png',
-          path: '/fruit',
+          path: '/products?category=fruit',
         },
         {
           cid: 3,
           title: '海鲜',
           icon: '/images/category/fish.png',
           activeIcon: '/images/category/fish-active.png',
-          path: '/fish',
+          path: '/products?category=fish',
         },
         {
           cid: 4,
           title: '肉禽',
           icon: '/images/category/meat.png',
           activeIcon: '/images/category/meat-active.png',
-          path: '/meat',
+          path: '/products?category=meat',
         },
         {
           cid: 5,
           title: '调料',
           icon: '/images/category/seasoning.png',
           activeIcon: '/images/category/seasoning-active.png',
-          path: '/seasoning',
+          path: '/products?category=seasoning',
         },
         {
           cid: 6,
           title: '米面',
           icon: '/images/category/rice.png',
           activeIcon: '/images/category/rice-active.png',
-          path: '/rice',
+          path: '/products?category=rice',
         },
         {
           cid: 7,
           title: '酒水',
           icon: '/images/category/wine.png',
           activeIcon: '/images/category/wine-active.png',
-          path: '/wine',
+          path: '/products?category=wine',
         },
       ],
     };

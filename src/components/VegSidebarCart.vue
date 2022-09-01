@@ -42,7 +42,6 @@ export default {
   methods: {
     switchIsShowDetails() {
       this.isShowDetails = !this.isShowDetails;
-      console.log(this.isShowDetails);
     },
   },
 };

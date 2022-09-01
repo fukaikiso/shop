@@ -1,9 +1,26 @@
 <template>
-  <div class="veg-favorite"></div>
+  <div
+    class="veg-favorite"
+    @click.stop="addFavorite">
+    <i :class="{ active: isActive }">❤</i>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isActive: false,
+    };
+  },
+  methods: {
+    addFavorite() {
+      console.log('加入收藏');
+      this.isActive = !this.isActive;
+      console.log(this.isActive);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -16,19 +33,22 @@ export default {};
   height: 30px;
   border-radius: 15px;
   user-select: none;
-}
-.veg-favorite::after {
-  content: '❤';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  color: #fff;
-  transform: translate(-50%, -50%);
+  z-index: 10;
+  > i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+  }
+  i.active {
+    color: var(--theme-danger-color);
+  }
 }
 .veg-favorite:hover {
   cursor: pointer;
-}
-.veg-favorite:hover::after {
-  color: var(--theme-danger-color);
+  i {
+    color: var(--theme-danger-color);
+  }
 }
 </style>

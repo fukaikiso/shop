@@ -10,7 +10,7 @@
       <!-- 导航栏 -->
       <div class="navigation">
         <router-link to="/">首页</router-link>
-        <router-link to="/">最新上架</router-link>
+        <router-link to="/products">商品列表</router-link>
         <router-link to="/user">用户中心</router-link>
         <router-link to="/about">关于我们</router-link>
       </div>
@@ -23,7 +23,11 @@
       </div>
       <!-- 登录收藏购物车 -->
       <div class="user">
-        <button class="login">登录</button>
+        <router-link
+          to="/login"
+          class="login"
+          >登录</router-link
+        >
         <router-link
           class="favorite"
           to="/user/wish-list">
@@ -142,7 +146,13 @@ export default {};
         }
       }
 
-      .favorite:hover,
+      .favorite:hover {
+        cursor: pointer;
+        path {
+          fill: var(--theme-danger-color);
+        }
+      }
+
       .cart:hover {
         cursor: pointer;
         path {

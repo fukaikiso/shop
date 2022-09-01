@@ -1,8 +1,6 @@
 <template>
   <div>
-    <veg-header></veg-header>
     <veg-sidebar-cart></veg-sidebar-cart>
-    <veg-breadcrumb :path-list="$route.meta.pathList"></veg-breadcrumb>
     <div class="user">
       <div class="banner">
         <img
@@ -39,18 +37,13 @@
         </div>
       </div>
     </div>
-
-    <veg-footer></veg-footer>
   </div>
 </template>
 
 <script>
-import VegHeader from '@/components/VegHeader.vue';
-import VegBreadcrumb from '@/components/VegBreadcrumb.vue';
-import VegFooter from '@/components/VegFooter.vue';
 import VegSidebarCart from '@/components/VegSidebarCart.vue';
 export default {
-  components: { VegHeader, VegBreadcrumb, VegFooter, VegSidebarCart },
+  components: { VegSidebarCart },
   data() {
     return {
       tabbar: [

@@ -1,7 +1,5 @@
 <template>
   <div class="product-details">
-    <veg-header></veg-header>
-    <veg-breadcrumb></veg-breadcrumb>
     <veg-sidebar-cart></veg-sidebar-cart>
     <!-- 商品详情 -->
     <div class="main">
@@ -104,20 +102,16 @@
         class="container"
         title="为您推荐"></veg-product-floor>
     </div>
-    <veg-footer></veg-footer>
   </div>
 </template>
 
 <script>
-import VegHeader from '@/components/VegHeader.vue';
-import VegFooter from '@/components/VegFooter.vue';
 import VegFavorite from '@/components/VegFavorite.vue';
 import VegSidebarCart from '@/components/VegSidebarCart.vue';
 import VegCounter from '@/components/VegCounter.vue';
 import VegProductFloor from '@/components/VegProductFloor.vue';
-import VegBreadcrumb from '@/components/VegBreadcrumb.vue';
 export default {
-  components: { VegHeader, VegFooter, VegFavorite, VegSidebarCart, VegCounter, VegProductFloor, VegBreadcrumb },
+  components: { VegFavorite, VegSidebarCart, VegCounter, VegProductFloor },
   data() {
     return {
       count: 1,

@@ -1,6 +1,8 @@
 <template>
   <div class="veg-product-floor">
-    <veg-product-header :title="title"></veg-product-header>
+    <veg-product-header
+      :title="title"
+      :link="link"></veg-product-header>
     <veg-product-card></veg-product-card>
   </div>
 </template>
@@ -9,7 +11,7 @@
 import VegProductCard from './VegProductCard.vue';
 import VegProductHeader from './VegProductHeader.vue';
 export default {
-  props: ['title'],
+  props: ['title', 'link'],
   components: { VegProductHeader, VegProductCard },
 };
 </script>

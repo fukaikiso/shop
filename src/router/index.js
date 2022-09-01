@@ -14,6 +14,12 @@ const routes = [
     path: '/product-details',
     name: 'ProductDetail',
     component: () => import('../views/ProductDetails.vue'),
+    meta: {
+      pathList: [
+        { pid: 1, title: '首页', href: '/' },
+        { pid: 2, title: '商品详情', href: '/product-details' },
+      ],
+    },
   },
   {
     path: '/about',
@@ -94,9 +100,45 @@ const routes = [
     },
   },
   {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue'),
+    meta: {
+      pathList: [
+        { pid: 1, title: '首页', href: '/' },
+        { pid: 2, title: '登录', href: '/login' },
+      ],
+    },
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/Register.vue'),
+    meta: {
+      pathList: [
+        { pid: 1, title: '首页', href: '/' },
+        { pid: 2, title: '注册', href: '/register' },
+      ],
+    },
+  },
+  {
+    path: '/products',
+    name: 'Products',
+    component: () => import('../views/Products.vue'),
+    meta: {
+      pathList: [
+        { pid: 1, title: '首页', href: '/' },
+        { pid: 2, title: '商品列表', href: '/products' },
+      ],
+    },
+  },
+  {
     path: '*',
     name: 'NotFound',
     component: () => import('../views/NotFound.vue'),
+    meta: {
+      pathList: [{ pid: 1, title: '返回首页', href: '/' }],
+    },
   },
 ];
 

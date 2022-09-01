@@ -1,7 +1,5 @@
 <template>
   <div class="about">
-    <veg-header></veg-header>
-    <veg-breadcrumb :path-list="$route.meta.pathList"></veg-breadcrumb>
     <div class="main">
       <div class="container">
         <div class="content">
@@ -16,16 +14,11 @@
         </div>
       </div>
     </div>
-    <veg-footer></veg-footer>
   </div>
 </template>
 
 <script>
-import VegHeader from '@/components/VegHeader.vue';
-import VegBreadcrumb from '@/components/VegBreadcrumb.vue';
-import VegFooter from '@/components/VegFooter.vue';
 export default {
-  components: { VegHeader, VegBreadcrumb, VegFooter },
   data() {
     return {};
   },
