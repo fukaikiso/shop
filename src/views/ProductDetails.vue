@@ -57,7 +57,7 @@
               <p class="time">2022年8月3日</p>
               <p>这个贼好吃！</p>
             </div>
-            <div class="rate">⭐</div>
+            <div class="rate">⭐⭐⭐⭐</div>
           </div>
           <div class="comment">
             <img
@@ -68,7 +68,7 @@
               <p class="time">2022年8月3日</p>
               <p>这个贼好吃！</p>
             </div>
-            <div class="rate">⭐</div>
+            <div class="rate">⭐⭐⭐⭐</div>
           </div>
           <div class="comment">
             <img
@@ -79,7 +79,7 @@
               <p class="time">2022年8月3日</p>
               <p>这个贼好吃！</p>
             </div>
-            <div class="rate">⭐</div>
+            <div class="rate">⭐⭐⭐⭐</div>
           </div>
         </div>
         <!-- 详情 -->
