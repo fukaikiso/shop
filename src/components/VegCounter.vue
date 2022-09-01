@@ -11,17 +11,16 @@
 
 <script>
 export default {
+  props: ['count'],
   data() {
-    return {
-      count: 1,
-      price: 12.4,
-    };
+    return {};
   },
   methods: {
     calCount(num) {
       //v-model输入的值为字符串
       this.count = parseInt(this.count);
       this.count += num;
+      console.log('this.$parent.cartItems :>> ', this.$parent.cartItems);
     },
   },
   watch: {

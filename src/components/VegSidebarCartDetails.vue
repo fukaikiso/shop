@@ -15,22 +15,32 @@
     </div>
     <!-- 购物项 -->
     <div class="main">
-      <div class="item">
-        <div class="close">x</div>
+      <div
+        class="item"
+        v-for="(c, i) in cartItems"
+        :key="i">
+        <div
+          class="close"
+          @click="deleteItem(i)">
+          x
+        </div>
         <div class="left">
           <img
-            src="../assets/images/products/cart/01.png"
+            :src="c.img"
             alt="" />
-          <veg-counter class="counter"></veg-counter>
+          <veg-counter
+            class="counter"
+            :count="c.count"
+            @chagne-count="changeCount"></veg-counter>
         </div>
         <div class="right">
           <div class="title">
-            <h3>胡萝卜</h3>
-            <span class="spec">1kg</span>
+            <h3>{{ c.title }}</h3>
+            <span class="spec">{{ c.spec }}</span>
           </div>
           <div class="price">
-            <span class="pre">￥12.00</span>
-            <span class="now">￥10.00</span>
+            <span class="pre">￥{{ c.price | salePrice }}</span>
+            <span class="now">￥{{ (c.price * (1 - c.discount)) | salePrice }}</span>
           </div>
         </div>
       </div>
@@ -40,15 +50,15 @@
     <div class="footer">
       <div class="price">
         <h4>原价</h4>
-        <p>￥24.00</p>
+        <p>￥{{ totalPrice | salePrice }}</p>
       </div>
       <div class="price">
         <h4>节省</h4>
-        <p>-￥12.00</p>
+        <p>-￥{{ saveMoney | salePrice }}</p>
       </div>
       <div class="price">
         <h4>总价</h4>
-        <p>￥12.00</p>
+        <p>￥{{ (totalPrice - saveMoney) | salePrice }}</p>
       </div>
       <button>结算购物车</button>
     </div>
@@ -61,20 +71,67 @@ export default {
   components: { VegCounter },
   props: ['isShowDetails'],
   data() {
-    return {};
+    return {
+      cartItems: [
+        { cid: 1, title: '胡萝卜', spec: '1kg', price: 3, discount: 0.2, img: '/images/products/cart/01.png', count: 1 },
+        { cid: 2, title: '水萝卜', spec: '1kg', price: 4, discount: 0.1, img: '/images/products/cart/02.png', count: 1 },
+        { cid: 3, title: '西红柿', spec: '1kg', price: 5, discount: 0.4, img: '/images/products/cart/03.png', count: 1 },
+      ],
+    };
   },
   methods: {
     changeShow() {
       this.$parent.switchIsShowDetails();
+    },
+    deleteItem(i) {
+      this.cartItems.splice(i, 1);
+    },
+    changeCount(event, i) {
+      this.cartItems[i], (count = event);
+    },
+  },
+  computed: {
+    totalPrice() {
+      let sum = 0;
+      this.cartItems.forEach((i) => {
+        sum += i.price * i.count;
+      });
+      return sum;
+    },
+    saveMoney() {
+      let sum = 0;
+      this.cartItems.forEach((i) => {
+        sum += i.price * i.discount * i.count;
+      });
+      return sum;
+    },
+  },
+  filters: {
+    salePrice(value) {
+      value = value.toFixed(2);
+      return value;
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.veg-sidebar-cart-details.show::-webkit-scrollbar {
+  display: none; /* Chrome Safari */
+}
 .veg-sidebar-cart-details.show {
   right: 0;
   transition: right 1s;
+  overflow: auto;
+
+  .header {
+    right: 0;
+    transition: right 1s;
+  }
+  .footer {
+    right: 0;
+    transition: right 1s;
+  }
 }
 .veg-sidebar-cart-details {
   position: fixed;
@@ -89,12 +146,20 @@ export default {
 
   .header {
     display: flex;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    height: 70px;
+    width: 300px;
+    padding: 0 20px;
     align-items: center;
-    padding: 20px;
     background-color: #3d3d3d;
     color: var(--theme-primary-color);
     user-select: none;
     font-weight: bold;
+    box-sizing: border-box;
+    z-index: 30;
+    transition: right 1s;
     img {
       width: 26px;
     }
@@ -110,6 +175,7 @@ export default {
 
   .main {
     display: flex;
+    width: 300px;
     flex-direction: column;
     .item {
       display: flex;
@@ -161,16 +227,27 @@ export default {
       }
     }
   }
+  .main::before {
+    content: '';
+    height: 70px;
+  }
+  .main::after {
+    content: '';
+    height: 200px;
+  }
 
   .footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    right: 0;
+    right: -300px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 250px;
-    padding: 25px;
+    padding: 0 25px;
+    height: 200px;
     background-color: var(--theme-bg-color);
+    transition: right 1s;
     .price {
       display: flex;
       justify-content: space-between;
