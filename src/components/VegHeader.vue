@@ -24,7 +24,9 @@
       <!-- 登录收藏购物车 -->
       <div class="user">
         <button class="login">登录</button>
-        <div class="favorite">
+        <router-link
+          class="favorite"
+          to="/user/wish-list">
           <svg
             t="1661822315559"
             class="icon"
@@ -39,8 +41,10 @@
               p-id="3461"
               fill="#4b566b"></path>
           </svg>
-        </div>
-        <div class="cart">
+        </router-link>
+        <router-link
+          class="cart"
+          to="/checkout">
           <svg
             t="1661822903326"
             class="icon"
@@ -63,7 +67,7 @@
               p-id="4444"
               fill="#4b566b"></path>
           </svg>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>

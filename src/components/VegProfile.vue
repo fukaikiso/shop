@@ -26,6 +26,11 @@
     <h3>地址簿</h3>
     <div class="address">
       <div
+        class="none"
+        v-if="userAddress.length == 0">
+        您还未添加地址
+      </div>
+      <div
         :class="['item', { active: defaultAddress == i }]"
         v-for="(a, i) in userAddress"
         :key="i"
@@ -226,6 +231,10 @@ export default {
     background-color: #fafafa;
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
+    .none {
+      text-align: center;
+      padding: 30px;
+    }
     > .item {
       padding: 0 80px;
       display: flex;

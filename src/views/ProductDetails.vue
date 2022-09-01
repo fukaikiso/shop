@@ -19,7 +19,7 @@
             <h3>海南香蕉</h3>
             <p class="unit">1kg</p>
             <p class="price">￥{{ total }}</p>
-            <veg-counter></veg-counter>
+            <veg-counter :count="count"></veg-counter>
             <div class="desc">精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉</div>
           </div>
           <button class="buy">加入购物车</button>

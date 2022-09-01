@@ -56,8 +56,8 @@ export default {
       tabbar: [
         { title: '个人主页', href: '/user/profile' },
         { title: '收藏列表', href: '/user/wish-list' },
-        { title: '订单详情', href: '/user/orders' },
-        { title: '物流信息', href: '/user/track' },
+        // { title: '订单详情', href: '/user/orders' },
+        // { title: '物流信息', href: '/user/track' },
       ],
     };
   },

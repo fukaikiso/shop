@@ -83,6 +83,17 @@ const routes = [
     ],
   },
   {
+    path: '/checkout',
+    name: 'Checkout',
+    component: () => import('../views/CheckOut.vue'),
+    meta: {
+      pathList: [
+        { pid: 1, title: '首页', href: '/' },
+        { pid: 2, title: '结算中心', href: '/checkout' },
+      ],
+    },
+  },
+  {
     path: '*',
     name: 'NotFound',
     component: () => import('../views/NotFound.vue'),
