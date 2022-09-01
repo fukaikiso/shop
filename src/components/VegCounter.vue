@@ -20,6 +20,7 @@ export default {
       //v-model输入的值为字符串
       this.count = parseInt(this.count);
       this.count += num;
+      this.$emit('change-count', num);
       console.log('this.$parent.cartItems :>> ', this.$parent.cartItems);
     },
   },

@@ -58,11 +58,11 @@
         <p>￥{{ totalPrice | salePrice }}</p>
       </div>
       <div class="price">
-        <h4>节省</h4>
+        <h4>折扣</h4>
         <p>-￥{{ saveMoney | salePrice }}</p>
       </div>
       <div class="price">
-        <h4>总价</h4>
+        <h4>合计</h4>
         <p>￥{{ (totalPrice - saveMoney) | salePrice }}</p>
       </div>
       <router-link

@@ -84,7 +84,7 @@
         </div>
         <!-- 详情 -->
         <div
-          class="detials"
+          class="details"
           v-show="showTab == 1">
           精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉 精选海南香蕉精选海南香蕉精选海南香蕉精选
         </div>
@@ -100,7 +100,8 @@
     <div class="recommand">
       <veg-product-floor
         class="container"
-        title="为您推荐"></veg-product-floor>
+        title="为您推荐"
+        link="/products?sort=recommand"></veg-product-floor>
     </div>
   </div>
 </template>
@@ -260,6 +261,11 @@ export default {
           border-bottom: none;
           padding-bottom: 0;
         }
+      }
+      > .details,
+      > .service {
+        padding: 20px;
+        line-height: 24px;
       }
     }
   }

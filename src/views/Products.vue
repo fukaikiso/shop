@@ -1,5 +1,6 @@
 <template>
   <div class="products">
+    <veg-sidebar-cart></veg-sidebar-cart>
     <div class="container">
       <!-- 商品列表 -->
       <div class="items">
@@ -15,8 +16,9 @@
 
 <script>
 import VegProductCard from '@/components/VegProductCard.vue';
+import VegSidebarCart from '@/components/VegSidebarCart.vue';
 export default {
-  components: { VegProductCard },
+  components: { VegProductCard, VegSidebarCart },
 };
 </script>
 
