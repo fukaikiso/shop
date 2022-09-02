@@ -8,11 +8,11 @@
           alt="" />
         <div class="desc">
           <img
-            src="/images/admin/thumb.jpg"
+            :src="$store.state.userInfo.avatar"
             alt="用户头像"
             class="avatar" />
-          <h3>{{ $store.state.userInfo.username }}</h3>
-          <p>这个人很懒，什么都没写~</p>
+          <h3>{{ $store.state.userInfo.nickname }}</h3>
+          <p>{{ $store.state.userInfo.description }}</p>
         </div>
       </div>
 

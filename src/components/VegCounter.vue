@@ -4,25 +4,35 @@
     <input
       class="count"
       type="text"
-      v-model="count" />
+      v-model="count"
+      ref="changeCountBtn" />
     <span @click="calCount(1)">+</span>
   </div>
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex';
 export default {
-  props: ['count'],
+  props: ['index'],
   data() {
-    return {};
+    return {
+      count: 1,
+    };
   },
   methods: {
+    ...mapMutations(['changeCount']),
     calCount(num) {
       //v-model输入的值为字符串
       this.count = parseInt(this.count);
       this.count += num;
-      this.$emit('change-count', num);
-      console.log('this.$parent.cartItems :>> ', this.$parent.cartItems);
     },
+  },
+  computed: {
+    ...mapState(['cartItems']),
+  },
+  mounted() {
+    let itemIndex = parseInt(this.index);
+    this.count = this.cartItems[itemIndex].count;
   },
   watch: {
     // 监测输入的数量为0~99的值，否则保持旧值
@@ -30,11 +40,44 @@ export default {
       let reg = /^([1-9]\d|[1-9])$/;
       if (reg.test(newValue)) {
         this.count = newValue;
+        // 多个参数以对象形式传入
+        this.changeCount({ index: this.index, count: this.count });
       } else {
         this.count = oldValue;
       }
     },
   },
+
+  //   props: ['index'],
+  // data() {
+  //   return {
+  //     count: 1,
+  //   };
+  // },
+  // methods: {
+  //   ...mapMutations(['changeCount']),
+  //   calCount(num) {
+  //     //v-model输入的值为字符串
+  //     this.count = parseInt(this.count);
+  //     this.count += num;
+  //     // 多个参数以对象形式传入
+  //     this.changeCount({ index: this.index, count: this.count });
+  //   },
+  // },
+  // computed: {
+  //   ...mapState(['cartItems']),
+  // },
+  // watch: {
+  //   // 监测输入的数量为0~99的值，否则保持旧值
+  //   count(newValue, oldValue) {
+  //     let reg = /^([1-9]\d|[1-9])$/;
+  //     if (reg.test(newValue)) {
+  //       this.count = newValue;
+  //     } else {
+  //       this.count = oldValue;
+  //     }
+  //   },
+  // },
 };
 </script>
 
@@ -53,6 +96,7 @@ export default {
     flex: 1;
     cursor: pointer;
     user-select: none;
+    caret-color: var(--theme-primary-color);
   }
   > .count {
     color: #fff;

@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -8,6 +7,9 @@ import vueAxios from 'vue-axios';
 
 Vue.config.productionTip = false;
 
+// 绑定eventBus
+Vue.prototype.$EventBus = new Vue();
+
 Vue.use(vueAxios, axios);
 axios.defaults.baseURL = 'http://127.0.0.1:3000';
 
@@ -15,7 +17,7 @@ axios.defaults.baseURL = 'http://127.0.0.1:3000';
 axios.interceptors.request.use(
   (config) => {
     if (store.state.token) {
-      config.headers.common.token = store.state.token;
+      config.headers.Authorization = store.state.token;
     }
     return config;
   },
@@ -26,23 +28,25 @@ axios.interceptors.request.use(
 );
 
 //http reponse响应拦截器
-axios.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  (error) => {
-    if (error.response) {
-      switch (error.response.status) {
-        case 401:
-          localStorage.removeItem('token');
-          router.replace({
-            path: '/views/login',
-            query: { redirect: router.currentRoute.fullPath }, //登录成功后跳入浏览的当前页面
-          });
-      }
-    }
-  }
-);
+// axios.interceptors.response.use(
+//   (response) => {
+//     return response;
+//   },
+//   (error) => {
+//     if (error.response) {
+//       switch (error.response.status) {
+//         case 401:
+//           alert('请重新登录');
+//           store.state.token = '';
+//           localStorage.removeItem('token');
+//           router.replace({
+//             path: '/views/login',
+//             query: { redirect: router.currentRoute.fullPath }, //登录成功后跳入浏览的当前页面
+//           });
+//       }
+//     }
+//   }
+// );
 
 new Vue({
   router,

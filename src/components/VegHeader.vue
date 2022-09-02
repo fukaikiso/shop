@@ -1,5 +1,8 @@
 <template>
-  <div class="veg-header">
+  <div
+    class="veg-header"
+    ref="header"
+    :class="{ fixed: isFixed }">
     <div class="container">
       <!-- logo -->
       <div class="logo">
@@ -24,7 +27,7 @@
       <div
         class="hello"
         v-if="$store.state.isLogin">
-        你好，{{ $store.state.userInfo.username }}
+        你好，{{ $store.state.userInfo.nickname }}
       </div>
       <!-- 登录收藏购物车 -->
       <div class="user">
@@ -91,6 +94,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      isFixed: false,
+    };
+  },
   methods: {
     logout() {
       this.$store.commit('removeToken');
@@ -98,12 +106,30 @@ export default {
       alert('退出成功');
       this.$router.push('/');
     },
+    handleScroll() {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      if (scrollTop > 0) {
+        // console.log(scrollTop);
+        this.isFixed = true;
+      } else {
+        this.isFixed = false;
+      }
+    },
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .veg-header {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+
   border-bottom: 1px solid #ccc;
   height: 80px;
   background-color: #fff;
@@ -185,5 +211,9 @@ export default {
       }
     }
   }
+}
+
+.veg-header.fixed {
+  position: fixed;
 }
 </style>

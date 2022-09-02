@@ -23,7 +23,7 @@
             @mouseenter="switchCategoryActive(i)"
             @mouseleave="categoryActive = -1"
             class="item"
-            v-for="(c, i) in productCatagories"
+            v-for="(c, i) in productCategories"
             :key="c.cid">
             <img
               v-show="categoryActive == i"
@@ -39,13 +39,16 @@
         <!-- 新品上架 -->
         <veg-product-floor
           title="新品上架"
-          link="/products?sort=new"></veg-product-floor>
+          link="/products?sort=newItems"
+          :items="newItems"></veg-product-floor>
         <veg-product-floor
           title="热销商品"
-          link="/products?sort=hot"></veg-product-floor>
+          link="/products?sort=hot"
+          :items="hot"></veg-product-floor>
         <veg-product-floor
           title="推荐购买"
-          link="/products?sort=recommand"></veg-product-floor>
+          link="/products?sort=recommand"
+          :items="recommend"></veg-product-floor>
       </div>
     </div>
   </div>
@@ -60,57 +63,10 @@ export default {
   data() {
     return {
       categoryActive: -1,
-      productCatagories: [
-        {
-          cid: 1,
-          title: '蔬菜',
-          icon: '/images/category/vegetable.png',
-          activeIcon: '/images/category/vegetable-active.png',
-          path: '/products?category=vegetable',
-        },
-        {
-          cid: 2,
-          title: '水果',
-          icon: '/images/category/fruit.png',
-          activeIcon: '/images/category/fruit-active.png',
-          path: '/products?category=fruit',
-        },
-        {
-          cid: 3,
-          title: '海鲜',
-          icon: '/images/category/fish.png',
-          activeIcon: '/images/category/fish-active.png',
-          path: '/products?category=fish',
-        },
-        {
-          cid: 4,
-          title: '肉禽',
-          icon: '/images/category/meat.png',
-          activeIcon: '/images/category/meat-active.png',
-          path: '/products?category=meat',
-        },
-        {
-          cid: 5,
-          title: '调料',
-          icon: '/images/category/seasoning.png',
-          activeIcon: '/images/category/seasoning-active.png',
-          path: '/products?category=seasoning',
-        },
-        {
-          cid: 6,
-          title: '米面',
-          icon: '/images/category/rice.png',
-          activeIcon: '/images/category/rice-active.png',
-          path: '/products?category=rice',
-        },
-        {
-          cid: 7,
-          title: '酒水',
-          icon: '/images/category/wine.png',
-          activeIcon: '/images/category/wine-active.png',
-          path: '/products?category=wine',
-        },
-      ],
+      productCategories: [],
+      newItems: [],
+      hot: [],
+      recommend: [],
     };
   },
   methods: {
@@ -120,6 +76,33 @@ export default {
     goToCategory(path) {
       this.$router.push(path);
     },
+    getCategory() {
+      this.axios.get('/category').then((res) => {
+        this.productCategories = res.data;
+        // console.log(this.productCategories);
+      });
+    },
+    getNewsItems() {
+      this.axios.get('/products?sort=newItems').then((res) => {
+        this.newItems = res.data;
+      });
+    },
+    getHot() {
+      this.axios.get('/products?sort=hot').then((res) => {
+        this.hot = res.data;
+      });
+    },
+    getRecommend() {
+      this.axios.get('/products?sort=recommend').then((res) => {
+        this.recommend = res.data;
+      });
+    },
+  },
+  mounted() {
+    this.getCategory();
+    this.getNewsItems();
+    this.getHot();
+    this.getRecommend();
   },
 };
 </script>

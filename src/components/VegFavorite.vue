@@ -1,24 +1,36 @@
 <template>
   <div
     class="veg-favorite"
-    @click.stop="addFavorite">
+    @click.stop="switchFavorite">
     <i :class="{ active: isActive }">❤</i>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
 export default {
+  props: ['item', 'index'],
   data() {
     return {
       isActive: false,
     };
   },
+  computed: {
+    ...mapGetters(['favoriteItemsId']),
+  },
   methods: {
-    addFavorite() {
-      console.log('加入收藏');
+    ...mapMutations(['updateFavoriteItem']),
+    switchFavorite() {
+      console.log('加入收藏', this.item, this.index, this.favoriteItemsId);
       this.isActive = !this.isActive;
-      console.log(this.isActive);
+      this.updateFavoriteItem({ item: this.item, isActive: this.isActive });
+      // console.log(this.isActive);
     },
+  },
+  mounted() {
+    if (this.favoriteItemsId.indexOf(this.item.pid) != -1) {
+      this.isActive = true;
+    }
   },
 };
 </script>

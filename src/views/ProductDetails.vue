@@ -12,7 +12,7 @@
             alt="" />
         </div>
         <div class="right">
-          <veg-favorite></veg-favorite>
+          <veg-favorite :item="detailItem"></veg-favorite>
           <div class="content">
             <h3>海南香蕉</h3>
             <p class="unit">1kg</p>
@@ -101,7 +101,8 @@
       <veg-product-floor
         class="container"
         title="为您推荐"
-        link="/products?sort=recommand"></veg-product-floor>
+        link="/products?sort=recommand"
+        :items="recommend"></veg-product-floor>
     </div>
   </div>
 </template>
@@ -111,6 +112,7 @@ import VegFavorite from '@/components/VegFavorite.vue';
 import VegSidebarCart from '@/components/VegSidebarCart.vue';
 import VegCounter from '@/components/VegCounter.vue';
 import VegProductFloor from '@/components/VegProductFloor.vue';
+import { mapState } from 'vuex';
 export default {
   components: { VegFavorite, VegSidebarCart, VegCounter, VegProductFloor },
   data() {
@@ -118,9 +120,11 @@ export default {
       count: 1,
       price: 12.4,
       showTab: 0,
+      recommend: [],
     };
   },
   computed: {
+    ...mapState(['detailItem']),
     total() {
       let result = this.count * this.price;
       result = result.toFixed(2);
@@ -131,6 +135,14 @@ export default {
     switchTab(index) {
       this.showTab = index;
     },
+    getRecommend() {
+      this.axios.get('/products?sort=recommend').then((res) => {
+        this.recommend = res.data;
+      });
+    },
+  },
+  mounted() {
+    this.getRecommend();
   },
 };
 </script>

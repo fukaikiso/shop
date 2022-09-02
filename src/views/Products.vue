@@ -4,11 +4,11 @@
     <div class="container">
       <!-- 商品列表 -->
       <div class="items">
-        <veg-product-card></veg-product-card>
+        <veg-product-card :items="items"></veg-product-card>
       </div>
       <!-- 更多 -->
       <div class="loadMore">
-        <button>更多</button>
+        <button @click="addMore(8)">更多</button>
       </div>
     </div>
   </div>
@@ -19,6 +19,32 @@ import VegProductCard from '@/components/VegProductCard.vue';
 import VegSidebarCart from '@/components/VegSidebarCart.vue';
 export default {
   components: { VegProductCard, VegSidebarCart },
+  data() {
+    return {
+      items: [],
+    };
+  },
+  methods: {
+    getItems(items) {
+      let url = this.$route.fullPath;
+      this.axios.get(url).then((res) => {
+        this.items = res.data;
+      });
+    },
+    // 增加n条数据
+    addMore(n) {
+      let newItems = [];
+      for (let i = 0; i < n; i++) {
+        let random = Math.floor(Math.random() * n);
+        this.items[random].pid += 10086;
+        newItems.push(this.items[random]);
+      }
+      this.items = [...this.items, ...newItems];
+    },
+  },
+  mounted() {
+    this.getItems();
+  },
 };
 </script>
 

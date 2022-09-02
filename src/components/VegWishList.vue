@@ -7,12 +7,12 @@
     <div class="main">
       <div
         class="none"
-        v-if="cartItems.length == 0">
+        v-if="favoriteItems.length == 0">
         您还没有收藏商品
       </div>
       <div
         class="item"
-        v-for="(c, i) in cartItems"
+        v-for="(c, i) in favoriteItems"
         :key="i">
         <div
           class="close"
@@ -41,26 +41,30 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   props: ['isShowDetails'],
   data() {
     return {
-      cartItems: [
-        { cid: 1, title: '胡萝卜', spec: '1kg', price: 3, discount: 0.2, img: '/images/products/cart/01.png', count: 1 },
-        { cid: 2, title: '水萝卜', spec: '1kg', price: 4, discount: 0.1, img: '/images/products/cart/02.png', count: 1 },
-        { cid: 3, title: '西红柿', spec: '1kg', price: 5, discount: 0.4, img: '/images/products/cart/03.png', count: 1 },
-      ],
+      // favoriteItems: [
+      //   { pid: 1, title: '上海青', spec: '1kg', price: 3, discount: 0.2, img: '/images/products/01.png', count: 1 },
+      //   { pid: 2, title: '葡萄', spec: '1kg', price: 4, discount: 0.1, img: '/images/products/02.png', count: 1 },
+      //   { pid: 3, title: '猕猴桃', spec: '1kg', price: 5, discount: 0.4, img: '/images/products/03.png', count: 1 },
+      // ],
     };
+  },
+  computed: {
+    ...mapState(['favoriteItems']),
   },
   methods: {
     changeShow() {
       this.$parent.switchIsShowDetails();
     },
     deleteItem(i) {
-      this.cartItems.splice(i, 1);
+      this.favoriteItems.splice(i, 1);
     },
     changeCount(event, i) {
-      this.cartItems[i], (count = event);
+      this.favoriteItems[i], (count = event);
     },
   },
 

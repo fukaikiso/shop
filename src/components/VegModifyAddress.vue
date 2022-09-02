@@ -4,7 +4,7 @@
       <h4>{{ title }}</h4>
       <div class="main">
         <div class="item">
-          <p class="title">备注</p>
+          <p class="title">收件人</p>
           <input
             type="text"
             v-model="$parent.userAddress[index].title" />
@@ -16,10 +16,10 @@
             v-model="$parent.userAddress[index].address" />
         </div>
         <div class="item">
-          <p class="title">邮编</p>
+          <p class="title">电话</p>
           <input
             type="text"
-            v-model="$parent.userAddress[index].code" />
+            v-model="$parent.userAddress[index].phone" />
         </div>
       </div>
       <div class="btn">

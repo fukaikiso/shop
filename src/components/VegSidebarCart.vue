@@ -23,14 +23,15 @@
             fill="#ffffff"
             p-id="2364"></path>
         </svg>
-        <div class="count">3 件</div>
+        <div class="count">{{ cartItems.length }} 件</div>
       </div>
-      <button class="amount">￥15.00</button>
+      <button class="amount">￥{{ sumPrice.currentPrice | salePrice }}</button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
 import VegSidebarCartDetails from './VegSidebarCartDetails.vue';
 export default {
   components: { VegSidebarCartDetails },
@@ -39,9 +40,19 @@ export default {
       isShowDetails: false,
     };
   },
+  computed: {
+    ...mapState(['cartItems']),
+    ...mapGetters(['sumPrice']),
+  },
   methods: {
     switchIsShowDetails() {
       this.isShowDetails = !this.isShowDetails;
+    },
+  },
+  filters: {
+    salePrice(value) {
+      value = value.toFixed(2);
+      return value;
     },
   },
 };
@@ -58,7 +69,7 @@ export default {
     justify-content: space-between;
     top: 30%;
     right: 0;
-    width: 80px;
+    width: 90px;
     height: 60px;
     font-size: 14px;
     padding: 20px 15px;

@@ -159,10 +159,15 @@ VueRouter.prototype.push = function push(location) {
 // 路由守卫，当LocalStorage无token时，跳转至登录
 router.beforeEach((to, from, next) => {
   const isLogin = localStorage.token ? true : false;
-  if (to.path == '/login' || to.path == '/register') {
+  if (to.path == '/login' || to.path == '/register' || to.path == '/' || to.path == '/products') {
     next();
   } else {
-    isLogin ? next() : next('/login');
+    if (isLogin) {
+      next();
+    } else {
+      alert('请登录账户');
+      next('/login');
+    }
   }
 });
 

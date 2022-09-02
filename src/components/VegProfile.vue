@@ -5,7 +5,7 @@
     <div class="info">
       <div class="item">
         <h4>昵称</h4>
-        <p>{{ $store.state.userInfo.username }}</p>
+        <p>{{ $store.state.userInfo.nickname }}</p>
       </div>
       <div class="item">
         <h4>简介</h4>
@@ -22,41 +22,6 @@
         class="modify"
         @click="showModifyInfo = true" />
     </div>
-    <!-- 地址簿 -->
-    <h3>地址簿</h3>
-    <div class="address">
-      <div
-        class="none"
-        v-if="userAddress.length == 0">
-        您还未添加地址
-      </div>
-      <div
-        :class="['item', { active: defaultAddress == i }]"
-        v-for="(a, i) in userAddress"
-        :key="i"
-        @click="defaultAddress = i">
-        <i>☑</i>
-        <h4>{{ a.title }}</h4>
-        <p>{{ a.address }}</p>
-        <p>{{ a.code }}</p>
-        <img
-          src="@/assets/images/user/modify.png"
-          alt="modify"
-          class="modify"
-          @click="clickModifyAddress(i)" />
-        <img
-          src="@/assets/images/user/delete.png"
-          alt="delete"
-          class="delete"
-          @click="deleteAddress(i)" />
-      </div>
-    </div>
-    <!-- 新增地址 -->
-    <button
-      class="newAddress"
-      @click="showAddAddress = true">
-      新增地址
-    </button>
 
     <!-- 修改个人信息 -->
     <div
@@ -99,75 +64,24 @@
       </div>
     </div>
 
-    <!-- 修改地址信息 -->
-    <veg-modify-address
-      title="修改地址信息"
-      :index="modifyAddressIndex"
-      v-if="showModifyAddress"></veg-modify-address>
-
-    <!-- 增加地址 -->
-    <div
-      class="modify-info"
-      v-if="showAddAddress">
-      <div class="card">
-        <h4>增加地址</h4>
-        <div class="main">
-          <div class="item">
-            <p class="title">备注</p>
-            <input
-              type="text"
-              v-model="newAddress.title" />
-          </div>
-          <div class="item">
-            <p class="title">地址</p>
-            <input
-              type="text"
-              v-model="newAddress.address" />
-          </div>
-          <div class="item">
-            <p class="title">邮编</p>
-            <input
-              type="text"
-              v-model="newAddress.code" />
-          </div>
-        </div>
-        <div class="btn">
-          <button
-            class="sure"
-            @click="createNewAddress">
-            确定
-          </button>
-          <button
-            class="cancel"
-            @click="showAddAddress = false">
-            取消
-          </button>
-        </div>
-      </div>
-    </div>
+    <!-- 地址簿 -->
+    <h3>地址簿</h3>
+    <veg-address></veg-address>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import VegAddress from './VegAddress.vue';
 import VegModifyAddress from './VegModifyAddress.vue';
 export default {
-  components: { VegModifyAddress },
+  components: { VegModifyAddress, VegAddress },
   data() {
     return {
-      userInfo: { nickname: '积极买菜人', description: 'jjmcr@163.com', phone: '15098121452' },
-      userAddress: [
-        { aid: 1, title: '学校', address: '湖北省武汉市洪山区关山口', code: '400400' },
-        { aid: 2, title: '家庭', address: '广东省广州市番禺区', code: '540400' },
-        { aid: 3, title: '工作', address: '湖北省武汉市江汉区', code: '405500' },
-      ],
-      defaultAddress: 0,
-      modifyAddressIndex: -1,
       showModifyInfo: false,
-      showModifyAddress: false,
-      showAddAddress: false,
-      newAddress: {},
     };
   },
+
   methods: {
     modifyInfo() {
       // TODO：发送修改请求
@@ -178,21 +92,9 @@ export default {
       this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
       this.showModifyInfo = !this.showModifyInfo;
     },
-    clickModifyAddress(i) {
-      this.modifyAddressIndex = i;
-      localStorage.setItem('userAddress', JSON.stringify(this.userAddress[i]));
-      this.showModifyAddress = !this.showModifyAddress;
-    },
-    deleteAddress(i) {
-      this.userAddress.splice(i, 1);
-    },
-    createNewAddress() {
-      if (this.newAddress.title && this.newAddress.address && this.newAddress.code) {
-        this.userAddress.push(this.newAddress);
-      }
-      this.newAddress = {};
-      this.showAddAddress = !this.showAddAddress;
-    },
+  },
+  computed: {
+    ...mapState(['userInfo']),
   },
   mounted() {
     localStorage.setItem('userInfo', JSON.stringify(this.userInfo));
@@ -226,72 +128,6 @@ export default {
       right: 20px;
       cursor: pointer;
     }
-  }
-  > .address {
-    background-color: #fafafa;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    .none {
-      text-align: center;
-      padding: 30px;
-    }
-    > .item {
-      padding: 0 80px;
-      display: flex;
-      position: relative;
-      flex-direction: column;
-      justify-content: space-evenly;
-      height: 140px;
-      border-bottom: 1px solid #ddd;
-      cursor: pointer;
-
-      > i {
-        position: absolute;
-        top: 20px;
-        left: 26px;
-        font-size: 18px;
-        color: #ccc;
-      }
-      > .modify {
-        width: 18px;
-        position: absolute;
-        top: 20px;
-        right: 54px;
-        cursor: pointer;
-      }
-      > .delete {
-        width: 20px;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        cursor: pointer;
-      }
-    }
-    > .item.active {
-      border-top: 1px solid var(--theme-primary-color);
-      border-bottom: 1px solid var(--theme-primary-color);
-      background-color: #fff;
-      i {
-        color: var(--theme-primary-color);
-      }
-    }
-    > .item:hover {
-      background-color: #fff;
-      i {
-        color: var(--theme-primary-color);
-      }
-    }
-  }
-  > .newAddress {
-    background-color: var(--theme-primary-color);
-    color: #fff;
-    padding: 20px 30px;
-    margin: 40px 60px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  > button:active {
-    background-color: var(--theme-click-color);
   }
 
   .modify-info {

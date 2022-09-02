@@ -35,16 +35,16 @@
               </div>
               <div class="right">
                 <div class="title">
-                  <h3>{{ c.title }}</h3>
+                  <h4>{{ c.title }}</h4>
                   <span class="spec">{{ c.spec }}</span>
                   <div class="price">
-                    <span class="pre">￥{{ c.price | salePrice }}</span>
-                    <span class="now">￥{{ (c.price * (1 - c.discount)) | salePrice }}</span>
+                    <span class="pre">￥{{ (c.price * c.count) | salePrice }}</span>
+                    <span class="now">￥{{ (c.price * (1 - c.discount) * c.count) | salePrice }}</span>
                   </div>
                 </div>
                 <veg-counter
                   class="counter"
-                  :count="c.count"
+                  :index="i"
                   @chagne-count="changeCount"></veg-counter>
               </div>
             </div>
@@ -54,15 +54,15 @@
           <div class="footer">
             <div class="price">
               <h4>原价</h4>
-              <p>￥{{ totalPrice | salePrice }}</p>
+              <p>￥{{ sumPrice.totalPrice | salePrice }}</p>
             </div>
             <div class="price">
               <h4>折扣</h4>
-              <p>-￥{{ saveMoney | salePrice }}</p>
+              <p>-￥{{ sumPrice.saveMoney | salePrice }}</p>
             </div>
             <div class="price">
               <h4>合计</h4>
-              <p>￥{{ (totalPrice - saveMoney) | salePrice }}</p>
+              <p>￥{{ sumPrice.currentPrice | salePrice }}</p>
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@
       <!-- 右侧用户信息 -->
       <div class="right">
         <!-- 收货信息 -->
-        <div class="info">
+        <!-- <div class="info">
           <h4>收件信息</h4>
           <div class="user-info">
             <div class="item">
@@ -87,7 +87,13 @@
               <input type="text" />
             </div>
           </div>
+        </div> -->
+
+        <div class="info">
+          <h4>地址簿</h4>
+          <veg-address></veg-address>
         </div>
+
         <!-- 支付信息 -->
         <div class="info">
           <h4>支付信息</h4>
@@ -96,32 +102,41 @@
             <!-- 总价 -->
             <div class="price">
               <span>合计：</span>
-              <span>￥{{ (totalPrice - saveMoney) | salePrice }}</span>
+              <span>￥{{ sumPrice.currentPrice | salePrice }}</span>
             </div>
             <!-- 选择支付方式 -->
-            <div class="select-payment">
+            <form
+              action=""
+              class="select-payment">
               <div class="item">
-                <input
-                  type="radio"
-                  value="1"
-                  name="payment" />
-                <span>支付宝</span>
+                <label>
+                  <input
+                    type="radio"
+                    value="1"
+                    name="payment"
+                    checked />
+                  <span>支付宝</span>
+                </label>
               </div>
               <div class="item">
-                <input
-                  type="radio"
-                  value="1"
-                  name="payment" />
-                <span>微信</span>
+                <label>
+                  <input
+                    type="radio"
+                    value="1"
+                    name="payment" />
+                  <span>微信</span>
+                </label>
               </div>
               <div class="item">
-                <input
-                  type="radio"
-                  value="1"
-                  name="payment" />
-                <span>银行卡</span>
+                <label>
+                  <input
+                    type="radio"
+                    value="1"
+                    name="payment" />
+                  <span>银行卡</span>
+                </label>
               </div>
-            </div>
+            </form>
             <img
               src="../assets/images/payment/01.png"
               alt="" />
@@ -143,48 +158,31 @@
 <script>
 import VegSidebarCartDetails from '@/components/VegSidebarCartDetails.vue';
 import VegCounter from '@/components/VegCounter.vue';
+import { mapGetters, mapMutations, mapState } from 'vuex';
+import VegAddress from '@/components/VegAddress.vue';
 
 export default {
-  components: { VegSidebarCartDetails, VegCounter },
+  components: { VegSidebarCartDetails, VegCounter, VegAddress },
   props: ['isShowDetails'],
   data() {
-    return {
-      cartItems: [
-        { cid: 1, title: '胡萝卜', spec: '1kg', price: 3, discount: 0.2, img: '/images/products/cart/01.png', count: 1 },
-        { cid: 2, title: '水萝卜', spec: '1kg', price: 4, discount: 0.1, img: '/images/products/cart/02.png', count: 1 },
-        { cid: 3, title: '西红柿', spec: '1kg', price: 5, discount: 0.4, img: '/images/products/cart/03.png', count: 1 },
-      ],
-    };
+    return {};
   },
   methods: {
+    ...mapMutations(['deleteItem']),
     changeShow() {
       this.$parent.switchIsShowDetails();
     },
-    deleteItem(i) {
-      this.cartItems.splice(i, 1);
-    },
     changeCount(event, i) {
-      this.cartItems[i], (count = event);
+      console.log(event, i);
     },
     showInfo() {
       window.alert('支付成功，谢谢惠顾！');
+      this.$router.push('/');
     },
   },
   computed: {
-    totalPrice() {
-      let sum = 0;
-      this.cartItems.forEach((i) => {
-        sum += i.price * i.count;
-      });
-      return sum;
-    },
-    saveMoney() {
-      let sum = 0;
-      this.cartItems.forEach((i) => {
-        sum += i.price * i.discount * i.count;
-      });
-      return sum;
-    },
+    ...mapState(['userAddress', 'cartItems']),
+    ...mapGetters(['sumPrice']),
   },
   filters: {
     salePrice(value) {
@@ -276,7 +274,7 @@ export default {
               flex: 1;
               .title {
                 height: 60%;
-                h3 {
+                h4 {
                   margin-bottom: 10px;
                   font-size: 16px;
                 }
@@ -334,6 +332,63 @@ export default {
           background-color: #3d3d3d;
           color: var(--theme-primary-color);
         }
+
+        > .address {
+          background-color: #fafafa;
+          border-top: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+          .none {
+            text-align: center;
+            padding: 30px;
+          }
+          > .item {
+            padding: 0 80px;
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 140px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+
+            > i {
+              position: absolute;
+              top: 20px;
+              left: 26px;
+              font-size: 18px;
+              color: #ccc;
+            }
+            > .modify {
+              width: 18px;
+              position: absolute;
+              top: 20px;
+              right: 54px;
+              cursor: pointer;
+            }
+            > .delete {
+              width: 20px;
+              position: absolute;
+              top: 20px;
+              right: 20px;
+              cursor: pointer;
+            }
+          }
+          > .item.active {
+            border-top: 1px solid var(--theme-primary-color);
+            border-bottom: 1px solid var(--theme-primary-color);
+            background-color: #fff;
+            i {
+              color: var(--theme-primary-color);
+            }
+          }
+          > .item:hover {
+            background-color: #fff;
+            i {
+              color: var(--theme-primary-color);
+            }
+          }
+        }
+
         .user-info {
           padding: 20px 30px 30px;
           .item {
