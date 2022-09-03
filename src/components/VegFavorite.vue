@@ -21,7 +21,7 @@ export default {
   methods: {
     ...mapMutations(['updateFavoriteItem']),
     switchFavorite() {
-      console.log('加入收藏', this.item, this.index, this.favoriteItemsId);
+      // console.log('加入收藏', this.item, this.index, this.favoriteItemsId);
       this.isActive = !this.isActive;
       this.updateFavoriteItem({ item: this.item, isActive: this.isActive });
       // console.log(this.isActive);

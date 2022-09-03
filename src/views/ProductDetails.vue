@@ -6,21 +6,32 @@
       <!-- 商品卡片 -->
       <div class="card">
         <div class="left">
-          <div class="discount">-30%</div>
+          <div class="discount">-{{ detailItem.discount * 100 }}%</div>
           <img
-            src="/images/product-detail/01.jpg"
+            :src="detailItem.img"
             alt="" />
         </div>
         <div class="right">
           <veg-favorite :item="detailItem"></veg-favorite>
           <div class="content">
-            <h3>海南香蕉</h3>
-            <p class="unit">1kg</p>
-            <p class="price">￥{{ total }}</p>
-            <veg-counter :count="count"></veg-counter>
-            <div class="desc">精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉</div>
+            <h3>{{ detailItem.title }}</h3>
+            <p class="unit">{{ detailItem.spec }}</p>
+            <div class="price">
+              <p>￥{{ (detailItem.price * (1 - detailItem.discount) * detailItem.count) | salePrice }}</p>
+              <p
+                class="pre-price"
+                v-if="detailItem.discount != 0">
+                ￥{{ (detailItem.price * detailItem.count) | salePrice }}
+              </p>
+            </div>
+            <veg-counter :newItem="detailItem"></veg-counter>
+            <div class="desc">{{ detailItem.description }}</div>
           </div>
-          <button class="buy">加入购物车</button>
+          <button
+            class="buy"
+            @click="addToCart()">
+            加入购物车
+          </button>
         </div>
       </div>
     </div>
@@ -86,7 +97,7 @@
         <div
           class="details"
           v-show="showTab == 1">
-          精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉精选海南香蕉 精选海南香蕉精选海南香蕉精选海南香蕉精选
+          {{ detailItem.description }}
         </div>
         <!-- 售后 -->
         <div
@@ -97,13 +108,13 @@
       </div>
     </div>
     <!-- 为您推荐 -->
-    <div class="recommand">
+    <!-- <div class="recommand">
       <veg-product-floor
         class="container"
         title="为您推荐"
         link="/products?sort=recommand"
         :items="recommend"></veg-product-floor>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -132,6 +143,11 @@ export default {
     },
   },
   methods: {
+    addToCart() {
+      this.$store.commit('addToCart', this.detailItem);
+      alert('加入购物车成功！');
+      this.$router.push('/products?sort=recommend');
+    },
     switchTab(index) {
       this.showTab = index;
     },
@@ -139,6 +155,11 @@ export default {
       this.axios.get('/products?sort=recommend').then((res) => {
         this.recommend = res.data;
       });
+    },
+  },
+  filters: {
+    salePrice(value) {
+      return value.toFixed(2);
     },
   },
   mounted() {
@@ -200,9 +221,17 @@ export default {
             color: #aaa;
           }
           .price {
+            display: flex;
             color: var(--theme-primary-color);
             font-weight: bold;
             font-size: 24px;
+            align-items: baseline;
+            .pre-price {
+              font-size: 18px;
+              padding: 0 10px;
+              color: #aaa;
+              text-decoration: line-through;
+            }
           }
         }
         .buy {

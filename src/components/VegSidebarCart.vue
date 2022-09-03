@@ -1,5 +1,7 @@
 <template>
-  <div class="veg-sidebar-cart">
+  <div
+    class="veg-sidebar-cart"
+    v-if="$store.state.isLogin">
     <veg-sidebar-cart-details :is-show-details="isShowDetails"></veg-sidebar-cart-details>
     <div
       class="veg-sidebar-cart-icon"

@@ -13,7 +13,16 @@
 <script>
 import { mapMutations, mapState } from 'vuex';
 export default {
-  props: ['index'],
+  props: {
+    index: { default: 0 },
+    mode: { default: 'single' },
+    newItem: {
+      // 默认值为数组或对象需要用工厂函数
+      default() {
+        return {};
+      },
+    },
+  },
   data() {
     return {
       count: 1,
@@ -28,11 +37,15 @@ export default {
     },
   },
   computed: {
-    ...mapState(['cartItems']),
+    ...mapState(['cartItems', 'detailItem']),
   },
   mounted() {
     let itemIndex = parseInt(this.index);
-    this.count = this.cartItems[itemIndex].count;
+    if (this.mode == 'multi') {
+      this.count = this.cartItems[itemIndex].count;
+    } else {
+      this.count = this.detailItem.count;
+    }
   },
   watch: {
     // 监测输入的数量为0~99的值，否则保持旧值
@@ -41,43 +54,13 @@ export default {
       if (reg.test(newValue)) {
         this.count = newValue;
         // 多个参数以对象形式传入
-        this.changeCount({ index: this.index, count: this.count });
+        this.changeCount({ index: this.index, count: this.count, mode: this.mode });
+        // console.log(this.detailItem);
       } else {
         this.count = oldValue;
       }
     },
   },
-
-  //   props: ['index'],
-  // data() {
-  //   return {
-  //     count: 1,
-  //   };
-  // },
-  // methods: {
-  //   ...mapMutations(['changeCount']),
-  //   calCount(num) {
-  //     //v-model输入的值为字符串
-  //     this.count = parseInt(this.count);
-  //     this.count += num;
-  //     // 多个参数以对象形式传入
-  //     this.changeCount({ index: this.index, count: this.count });
-  //   },
-  // },
-  // computed: {
-  //   ...mapState(['cartItems']),
-  // },
-  // watch: {
-  //   // 监测输入的数量为0~99的值，否则保持旧值
-  //   count(newValue, oldValue) {
-  //     let reg = /^([1-9]\d|[1-9])$/;
-  //     if (reg.test(newValue)) {
-  //       this.count = newValue;
-  //     } else {
-  //       this.count = oldValue;
-  //     }
-  //   },
-  // },
 };
 </script>
 

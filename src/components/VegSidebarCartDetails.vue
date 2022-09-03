@@ -35,7 +35,8 @@
             alt="" />
           <veg-counter
             class="counter"
-            :index="i"></veg-counter>
+            :index="i"
+            mode="multi"></veg-counter>
         </div>
         <div class="right">
           <div class="title">

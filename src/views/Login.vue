@@ -92,7 +92,7 @@ export default {
           this.$store.commit('setToken', res.data.token);
           this.$store.commit('switchIsLogin');
           this.$store.commit('updateUserInfo', res.data.result);
-          console.log(res.data.result);
+          // console.log(res.data.result);
           this.$router.push('/');
         } else if (res.data.code == 201) {
           alert('用户名不存在或密码错误');

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Index from '../views/Index';
+import store from '../store/index';
 
 Vue.use(VueRouter);
 
@@ -156,13 +157,14 @@ VueRouter.prototype.push = function push(location) {
   return originalPush.call(this, location).catch((err) => err);
 };
 
-// 路由守卫，当LocalStorage无token时，跳转至登录
+// 路由守卫，当用户未登录时，跳转至登录
 router.beforeEach((to, from, next) => {
-  const isLogin = localStorage.token ? true : false;
+  // const isLogin = localStorage.token ? true : false;
+  // console.log(store.state.isLogin);
   if (to.path == '/login' || to.path == '/register' || to.path == '/' || to.path == '/products') {
     next();
   } else {
-    if (isLogin) {
+    if (store.state.isLogin) {
       next();
     } else {
       alert('请登录账户');

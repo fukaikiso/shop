@@ -96,9 +96,14 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    // 更新商品详情
     updateDetialItem(state, item) {
-      state.detailItem = item;
+      state.detailItem = { ...item };
+      // 新增的属性需要用set设置setter和getter方法
+      Vue.set(state.detailItem, 'count', 1);
+      console.log(state.detailItem);
     },
+    // 更改登录状态
     switchIsLogin(state) {
       state.isLogin = !state.isLogin;
     },
@@ -110,17 +115,26 @@ export default new Vuex.Store({
       state.token = '';
       localStorage.removeItem('token');
     },
+    // 更新用户信息
     updateUserInfo(state, value) {
       state.userInfo = value;
     },
+    // 修改购物数量
     changeCount(state, arg) {
-      // console.log(arg);
       let index = parseInt(arg.index);
-      state.cartItems[index].count = arg.count;
+      if (arg.mode == 'multi') {
+        state.cartItems[index].count = arg.count;
+      } else {
+        Vue.set(state.detailItem, 'count', arg.count);
+      }
     },
     // 删除购物车项目
     deleteItem(state, i) {
       state.cartItems.splice(i, 1);
+    },
+    //加入购物车
+    addToCart(state, item) {
+      state.cartItems.push(item);
     },
     // 更新心愿单
     updateFavoriteItem(state, arg) {

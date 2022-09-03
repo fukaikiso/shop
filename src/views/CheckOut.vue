@@ -45,6 +45,7 @@
                 <veg-counter
                   class="counter"
                   :index="i"
+                  mode="multi"
                   @chagne-count="changeCount"></veg-counter>
               </div>
             </div>
