@@ -169,7 +169,7 @@ export default {
     return {};
   },
   methods: {
-    ...mapMutations(['deleteItem']),
+    ...mapMutations(['deleteItem', 'clearCart']),
     changeShow() {
       this.$parent.switchIsShowDetails();
     },
@@ -178,6 +178,7 @@ export default {
     },
     showInfo() {
       window.alert('支付成功，谢谢惠顾！');
+      this.clearCart();
       this.$router.push('/');
     },
   },

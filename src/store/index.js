@@ -99,6 +99,10 @@ export default new Vuex.Store({
     addToCart(state, item) {
       state.cartItems.push(item);
     },
+    //清空购物车
+    clearCart(state) {
+      state.cartItems = [];
+    },
     // 更新心愿单
     updateFavoriteItem(state, arg) {
       let deleteIndex = -1;
