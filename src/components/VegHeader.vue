@@ -26,7 +26,8 @@
       </div>
       <div
         class="hello"
-        v-if="$store.state.isLogin">
+        v-if="$store.state.isLogin"
+        @click="$router.push('/user')">
         你好，{{ $store.state.userInfo.nickname }}
       </div>
       <!-- 登录收藏购物车 -->
@@ -160,6 +161,13 @@ export default {
         margin: 0 5px;
       }
     }
+
+    .hello {
+      cursor: pointer;
+    }
+    // .hello:hover {
+    //   color: var(--theme-primary-color);
+    // }
 
     .user {
       display: flex;
