@@ -20,44 +20,7 @@ export default new Vuex.Store({
       { pid: 6, title: '水萝卜', spec: '1kg', price: 8, discount: 0.2, img: '/images/products/cart/02.png', count: 1, isFavorited: false },
       { pid: 4, title: '西红柿', spec: '1kg', price: 5, discount: 0, img: '/images/products/cart/03.png', count: 1, isFavorited: false },
     ],
-    favoriteItems: [
-      {
-        pid: 14,
-        title: '西红柿',
-        spec: '1kg',
-        price: 5,
-        discount: 0,
-        img: '/images/products/04.png',
-        isFavorited: true,
-      },
-      {
-        pid: 17,
-        title: '胡萝卜',
-        spec: '1kg',
-        price: 6,
-        discount: 0.1,
-        img: '/images/products/07.png',
-        isFavorited: true,
-      },
-      {
-        pid: 98,
-        title: '苹果',
-        spec: '1kg',
-        price: 8,
-        discount: 0.1,
-        img: '/images/products/08.png',
-        isFavorited: true,
-      },
-      {
-        pid: 713,
-        title: '红酒',
-        spec: '1瓶',
-        price: 888,
-        discount: 0.3,
-        img: '/images/products/13.png',
-        isFavorited: true,
-      },
-    ],
+    favoriteItems: [],
   },
   getters: {
     favoriteItemsId(state) {
@@ -101,7 +64,7 @@ export default new Vuex.Store({
       state.detailItem = { ...item };
       // 新增的属性需要用set设置setter和getter方法
       Vue.set(state.detailItem, 'count', 1);
-      console.log(state.detailItem);
+      // console.log(state.detailItem);
     },
     // 更改登录状态
     switchIsLogin(state) {

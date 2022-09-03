@@ -11,7 +11,8 @@ Vue.config.productionTip = false;
 Vue.prototype.$EventBus = new Vue();
 
 Vue.use(vueAxios, axios);
-axios.defaults.baseURL = 'http://127.0.0.1:3000';
+axios.defaults.baseURL = 'http://api.veg.fukaikiso.cn:3000/';
+// axios.defaults.withCredentials = true;
 
 //添加请求拦截器
 axios.interceptors.request.use(
