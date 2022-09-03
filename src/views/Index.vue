@@ -9,7 +9,7 @@
             alt="" />
           <div class="desc">
             <p>足不出户，吃到新鲜蔬菜！</p>
-            <button>立马买菜</button>
+            <button @click="$router.push('/products')">立马买菜</button>
           </div>
         </div>
         <!-- 商品分类 -->
@@ -133,6 +133,7 @@ export default {
         padding: 10px 15px;
         border-radius: 5px;
         margin: 20px 0;
+        cursor: pointer;
       }
     }
   }
