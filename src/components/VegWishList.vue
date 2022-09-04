@@ -13,7 +13,8 @@
       <div
         class="item"
         v-for="(c, i) in favoriteItems"
-        :key="i">
+        :key="i"
+        @click="clickItem(c)">
         <div
           class="close"
           @click="deleteItem(i)">
@@ -30,10 +31,14 @@
             <span class="spec">{{ c.spec }}</span>
           </div>
           <div class="price">
-            <span class="pre">￥{{ c.price | salePrice }}</span>
             <span class="now">￥{{ (c.price * (1 - c.discount)) | salePrice }}</span>
+            <span
+              class="pre"
+              v-if="c.discount != 0"
+              >￥{{ c.price | salePrice }}</span
+            >
           </div>
-          <button class="buy">加入购物车</button>
+          <button class="buy">查看详情</button>
         </div>
       </div>
     </div>
@@ -41,7 +46,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 export default {
   props: ['isShowDetails'],
   data() {
@@ -65,6 +70,10 @@ export default {
     },
     changeCount(event, i) {
       this.favoriteItems[i], (count = event);
+    },
+    clickItem(item) {
+      this.$store.commit('updateDetialItem', item);
+      this.$router.push(`/product-details?pid=${item.pid}`);
     },
   },
 

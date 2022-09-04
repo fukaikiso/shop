@@ -44,8 +44,8 @@
             <span class="spec">{{ c.spec }}</span>
           </div>
           <div class="price">
-            <span class="pre">￥{{ (c.price * c.count) | salePrice }}</span>
             <span class="now">￥{{ (c.price * (1 - c.discount) * c.count) | salePrice }}</span>
+            <span class="pre">￥{{ (c.price * c.count) | salePrice }}</span>
           </div>
         </div>
       </div>
@@ -214,6 +214,7 @@ export default {
             color: #aaa;
             text-decoration: line-through;
             width: 50%;
+            margin-left: 10px;
           }
         }
       }
