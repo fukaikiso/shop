@@ -47,7 +47,7 @@
           :items="hot"></veg-product-floor>
         <veg-product-floor
           title="推荐购买"
-          link="/products?sort=recommand"
+          link="/products?sort=recommend"
           :items="recommend"></veg-product-floor>
       </div>
     </div>
